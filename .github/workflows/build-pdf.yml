@@ -1,4 +1,4 @@
-name: Build LaTeX pdf
+name: Build and Commit LaTeX Document
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-commit:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,8 +19,23 @@ jobs:
         with:
           root_file: main.tex
 
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v4
-        with:
-          name: PDF
-          path: main.pdf
+      - name: Clone target repository
+        run: |
+          git clone https://github.com/beleg-05-resilienz-verteilte-systeme/Abgabe.git target_repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - name: Copy built PDF to target repository
+        run: |
+          cp main.pdf target_repo/05-resilienz-verteilte-systeme.pdf
+
+      - name: Commit and push to target repository
+        run: |
+          cd target_repo
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add 05-resilienz-verteilte-systeme.pdf
+          git commit -m "Update Belegarbeit PDF"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
