@@ -21,7 +21,7 @@ jobs:
 
       - name: Clone target repository
         run: |
-          git clone https://github.com/beleg-05-resilienz-verteilte-systeme/Abgabe.git target_repo
+          git clone https://${{ secrets.PAT }}@github.com/beleg-05-resilienz-verteilte-systeme/Abgabe.git target_repo
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
@@ -35,7 +35,5 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add 05-resilienz-verteilte-systeme.pdf
-          git commit -m "Update Belegarbeit PDF"
+          git commit -m "Update Belegarbeit (PDF)"
           git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
