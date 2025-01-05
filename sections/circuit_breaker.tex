@@ -27,7 +27,7 @@ zu einem Dominoeffekt führen kann, der andere miteinander verbundene Dienste eb
 Mitleidenschaft zieht.
 Um dieses Problem zu entschärfen, wird das Circuit-Breaker-Muster als Präventivmaßnahme eingeführt,
 um Ausfälle innerhalb einer einzelnen Komponente einzudämmen und systemweite Ausfälle zu verhindern.
-Der Grundgedanke hinter dem Circuit-Breaker-Pattern ist „Fail Fast“, d.h.\ sobald ein Dienst Anzeichen
+Der Grundgedanke hinter dem Circuit-Breaker-Pattern ist „Fail Fast“, d.h.\ sobald ein Dienst Anzeichen % TODO Anführungszeichen
 von Unreaktivität zeigt, sollten die Anrufer sofort aufhören, auf ihn zu warten,
 und die Situation in der Annahme behandeln, dass der Dienst möglicherweise nicht verfügbar ist.
 
@@ -90,7 +90,7 @@ Diese Flexibilität bei der Bereitstellung ermöglicht eine robustere und effekt
 die die allgemeine Ausfallsicherheit und Verfügbarkeit des Systems verbessern kann.
 
 
-Der erste Ansatz ist der diensteseitige Circuit-Breaker, bei dem der Circuit-Breaker im Dienst selbst implementiert ist.
+Der erste Ansatz ist der dienstseitige Circuit-Breaker, bei dem der Circuit-Breaker im Dienst selbst implementiert ist.
 Dieser Ansatz hat den Vorteil, dass keine Annahmen über das Verhalten des Clients getroffen werden müssen,
 da der Dienst die volle Kontrolle über den Circuit-Breaker hat.
 Er erfordert jedoch eine Änderung des Quellcodes des Dienstes und verbraucht die eigenen Ressourcen des Dienstes,
@@ -124,24 +124,7 @@ Python-Code in eine Prozedur zu verpacken, die von einem Circuit-Breaker gesteue
 Diese Bibliothek hilft, den Ausfall von abhängigen Diensten oder Komponenten durch Überlastung
 oder Fehler zu vermeiden und unterstützt Funktionen wie Fehlerzählung,
 Zustandsüberwachung und benutzerdefinierte Rückfallstrategien. % Quelle?
-\textit{Pybreaker} unterstützt sowohl Client- als auch Dienstseitige Circuit-Breaker.
-
-
-
-Der Prototyp fängt Client-Anrufe an einen
-Zieldienst ab und wendet Leistungsschalterlogik an. Das Programm enthält
- Ein- und Ausgabeports für die Kommunikation, und die Zustandsmaschine
-des Leistungsschalters speichert Zustände und Statistiken. Je nach
-Zustand (geschlossen, offen oder halboffen) werden unterschiedliche
-Aktionen ausgeführt, z. B. das Weiterleiten von Nachrichten, die
-Behandlung von Fehlern oder das Blockieren von Anfragen. Der Übergang
-zwischen den Zuständen wird durch Prozeduren wie trip und resetTO
-verwaltet, wodurch sichergestellt wird, dass der Leistungsschalter
-effektiv funktioniert, um Dienstausfälle zu verhindern und eine
-zuverlässige Kommunikation zwischen Clients und Zieldiensten zu
-gewährleisten.
-
-
+\textit{Pybreaker} unterstützt sowohl Client- als auch dienstseitige Circuit-Breaker.
 
 \tikzset{cross/.style={cross out, draw=black,thick, minimum size=10*(#1-\pgflinewidth), inner sep=1pt, outer sep=1pt,
     color=red, minimum height = 0.4cm},
@@ -175,3 +158,7 @@ reached$]$}};
 \caption{Circuit Breaker Zustandsdiagramm nach \cite{Montesi.19.09.2016}.}
 \label{cb-fsm}
 \end{figure}
+
+Je nach Zustand (geschlossen, offen oder halboffen) werden unterschiedliche
+Aktionen ausgeführt, z.B.\ das Weiterleiten von Nachrichten, die
+Behandlung von Fehlern oder das Blockieren von Anfragen, siehe Abbildung~\ref{cb-fsm}.
