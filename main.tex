@@ -1,13 +1,16 @@
 %% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[acmtog]{acmart}
 \usepackage[english,ngerman]{babel}
-\usepackage[utf8]{inputenc} 
+\usepackage[utf8]{inputenc}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,external}
 
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
   \providecommand\BibTeX{{%
     \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
-    
+
 \copyrightyear{2024}
 \acmYear{2024}
 \citestyle{acmauthoryear}
@@ -40,7 +43,7 @@
 \authornote{Alle Studierenden trugen zu gleichen Teilen zu dieser Arbeit bei.}
 \author{Florian Schmidt}
 \authornotemark[1]
-\author{Lukas Elias Westholt}  
+\author{Lukas Westholt}
 \authornotemark[1]
 \affiliation{%
   \institution{Hochschule für Technik, Wirtschaft und Kultur Leipzig (HTWK Leipzig)}
@@ -62,14 +65,15 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-%  (Abstract-Länge ist typischerweise 15-25 Zeilen lang, in der PDF-Darstellung) 
-  
-  A clear and well-documented \LaTeX\ document is presented as an
-  article formatted for publication by ACM in a conference proceedings
-  or journal publication. Based on the ``acmart'' document class, this
-  article presents and explains many of the common variations, as well
-  as many of the formatting elements an author may use in the
-  preparation of the documentation of their work.
+%  (Abstract-Länge ist typischerweise 15-25 Zeilen lang, in der PDF-Darstellung)
+
+Diese Arbeit untersucht Strategien und Muster zur Steigerung der Resilienz moderner verteilter Anwendungen,
+darunter Circuit Breaker, Retry-Muster und Fallback-Strategien.
+Ziel ist es, Systeme gegen Ausfälle und Spitzenbelastungen abzusichern, betriebliche Kosten zu reduzieren
+und Nutzerzufriedenheit zu gewährleisten.
+Die Analyse umfasst allgemeine Ansätze wie Redundanz und Skalierung sowie konkrete Implementierungen in Python
+und Beispiele aus der Industrie.
+Abschließend werden zentrale Erkenntnisse zusammengefasst und Handlungsempfehlungen abgeleitet.
 \end{abstract}
 
 \maketitle
@@ -83,7 +87,7 @@
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{sample-base}
+\bibliography{sample-base,literatur}
 
 \input{sections/anhang}
 
