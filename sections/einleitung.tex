@@ -1,28 +1,47 @@
 \section{Einleitung und Motivation}
 
-(Beschreibung von Kontext, Problemen, Anforderungen und Zielen) 
+Die rasante technologische Entwicklung im Bereich verteilter Systeme und Cloud-basierter Anwendungen stellt
+die Softwarearchitektur vor neue Herausforderungen.
+Eine zentrale Motivation für die vorliegende Arbeit ist die Notwendigkeit, Anwendungen effizient gegen
+Ausfälle und Störungen abzusichern, um langfristig betriebliche Kosten zu reduzieren und die Nutzerzufriedenheit
+zu gewährleisten.
+Gerade in geschäftskritischen Anwendungen können Systemausfälle erheblichen wirtschaftlichen Verlust und
+Vertrauensverlust bei den Nutzerinnen und Nutzern verursachen.
+Darüber hinaus sind in regulierten Branchen, wie der Finanz- und Gesundheitsindustrie,
+hohe Anforderungen an Verfügbarkeit und Stabilität zu erfüllen.
+Diese regulatorischen Vorgaben machen es notwendig, Resilienzstrategien nicht nur als Zusatz,
+sondern als integralen Bestandteil der Softwareentwicklung zu betrachten.
 
-ACM's consolidated article template, introduced in 2017, provides a
-consistent \LaTeX\ style for use across ACM publications, and
-incorporates accessibility and metadata-extraction functionality
-necessary for future Digital Library endeavors. Numerous ACM and
-SIG-specific \LaTeX\ templates have been examined, and their unique
-features incorporated into this single new template.
+Ein weiteres Schlüsselmotiv ist die Weiterentwicklung technologischer Ansätze zur Resilienzsteigerung.
+Mit der zunehmenden Verbreitung von Microservices, Containerisierung und cloud-nativen Architekturen
+entstehen neue Potenziale, aber auch Herausforderungen, die innovative Muster und Techniken erfordern.
+Techniken wie Circuit Breaker, Retry-Muster und Fallback-Strategien sind hier entscheidend, um Fehler zu isolieren,
+die Stabilität des Gesamtsystems zu erhalten und negative Auswirkungen auf Benutzer zu minimieren.
+Denn Anwendungen müssen nicht nur unter normalen Betriebsbedingungen eine hohe Leistung erbringen,
+sondern auch unter Spitzenbelastungen und bei unerwarteten Systemausfällen robuste Funktionalität gewährleisten.
 
-If you are new to publishing with ACM, this document is a valuable
-guide to the process of preparing your work for publication. If you
-have published with ACM before, this document provides insight and
-instruction into more recent changes to the article template.
 
-The ``\verb|acmart|'' document class can be used to prepare articles
-for any ACM publication --- conference or journal, and for any stage
-of publication, from review to final ``camera-ready'' copy, to the
-author's own version, with {\itshape very} few changes to the source.
+Die iterative Integration solcher Resilienzstrategien in den Entwicklungsprozess wird durch agile Methoden begünstigt.
+Agile Ansätze ermöglichen eine schrittweise Identifikation, Implementierung und Evaluierung von Resilienzanforderungen.
+Dadurch wird sichergestellt, dass Systeme nicht nur initial robust gestaltet werden,
+sondern sich kontinuierlich an neue Anforderungen und Bedrohungen anpassen können.
 
-(kurze Zusammenfassung der Struktur der Belegarbeit)
 
-Diese Arbeit ist folgendermaßen strukturiert. 
-In Kapitel ... 
-...
-...
-Abschließend ...
+Die vorliegende Arbeit untersucht Strategien und Muster zur Steigerung der Resilienz
+und Fehlertoleranz moderner webbasierter Anwendungen.
+Ziel ist es, aktuelle Architekturansätze und Mechanismen systematisch einzuordnen und ihre Effektivität sowie
+Einsatzpotenziale zu bewerten.
+Dazu werden zunächst allgemeine Resilienzstrategien wie Redundanz, Partitionierung und Skalierung vorgestellt (Kapitel 2).
+Im weiteren Verlauf werden spezifische Patterns detailliert analysiert
+und hinsichtlich ihrer Vor- und Nachteile sowie Erfolgsfaktoren untersucht (Kapitel 3).
+
+
+Der praktische Teil der Arbeit umfasst neben der Diskussion von Anwendungsbeispielen aus der Industrie auch
+Beispielimplementierungen in der Scriptsprache Python (Kapitel 4).
+Als Fallstudie dient Netflix, ein Vorreiter in der Entwicklung und Implementierung resilienter Architekturen. % Eventuell...
+Abschließend werden die zentralen Erkenntnisse zusammengefasst (Kapitel 5).
+Dabei ist es vorrangig, übertragbare Handlungsempfehlungen und Entscheidungshilfen
+für die Auswahl geeigneter Resilienzmaßnahmen abzuleiten.
+
+Durch diese Arbeit wird ein Beitrag zur Weiterentwicklung robuster, skalierbarer und fehlertoleranter Systeme geleistet,
+die den hohen Anforderungen moderner Webanwendungen gerecht werden.
