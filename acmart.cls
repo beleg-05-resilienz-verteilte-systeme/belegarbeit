@@ -2779,7 +2779,7 @@
   %\def\email##1##2{\unskip, \nolinkurl{##2}}%
   %\addresses
   %\egroup
-  Diese Arbeit wurde im Rahmen des Mastermoduls \glqq Software Engineering\grqq\ (Dozent: Prof. Dr. Andreas Both) an der HTWK Leipzig im Wintersemester 2023/2024 erstellt.
+  Diese Arbeit wurde im Rahmen des Mastermoduls \glqq Software Engineering\grqq\ (Dozent: Prof. Dr. Andreas Both) an der HTWK Leipzig im Wintersemester 2024/2025 erstellt.
   Diese Arbeit ist under der Lizenz ... freigegeben.}
 \AtEndDocument{\if@ACM@nonacm\else\if@ACM@journal
   \ifx\@authorsaddresses\@empty
@@ -3003,7 +3003,7 @@
         %\@journalNameShort, Vol. \@acmVolume, No.
         %\@acmNumber, Article \@acmArticle.  Publication date: %\@acmPubDate.
         % 2nd and FOLLOWING PAGES
-        Modul \glqq Software Engineering\grqq, Prof.~Dr.~Andreas~Both, Wintersemester 2023/2024
+        Modul \glqq Software Engineering\grqq, Prof.~Dr.~Andreas~Both, Wintersemester 2024/2025
         }%
       \fi
     \else % Proceedings
@@ -3119,7 +3119,7 @@
         %\@acmNumber, Article \@acmArticle.  Publication date:
         %\@acmPubDate.
         % FIRST PAGE
-        % Modul \glqq Software Engineering\grqq, Prof.~Dr.~Andreas~Both, Wintersemester 2023/2024
+        % Modul \glqq Software Engineering\grqq, Prof.~Dr.~Andreas~Both, Wintersemester 2024/2025
         }%
       \fi%
       \fancyhead[L]{\ACM@linecountL\@acmBadgeL}%
