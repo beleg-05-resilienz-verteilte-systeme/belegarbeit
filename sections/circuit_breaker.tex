@@ -5,10 +5,9 @@ Circuit-Breaker sind Entwurfsmuster, die dazu dienen, Fehler in verteilten Syste
 indem sie den Zugriff auf fehlerhafte Dienste vorübergehend blockieren,
 um eine Überlastung zu verhindern und die Systemstabilität zu gewährleisten.
 
-\cite{Montesi.19.09.2016} hebt die Rolle von Circuit-Breaker in Microservices-Architekturen hervor,
-um kaskadierende Fehler zu vermeiden.
-
-Microservices sind autonome Dienste, die über Message Passing kommunizieren,
+\citet{Montesi.19.09.2016} heben die Rolle von Circuit-Breaker in Microservices-Architekturen hervor,
+um kaskadierende Fehler zu vermeiden. % TODO "and" --> "und"
+Microservices sind autonome Dienste, die über Message Passing kommunizieren, % Was ist Message Passing?
 während bei \textit{Serviceorientierter Architektur} (SOA) die Komponenten einer Anwendung Teil eines
 einzigen ausführbaren Artefakts, eines Monolithen, sind.
 
@@ -22,7 +21,7 @@ wie z.B.\ Kommunikationsausfälle, die Überlastung von Diensten und die Notwend
 Änderungen an Dienst-APIs im Laufe der Zeit zu bewältigen.
 
 Ein Ausfall in einer MSA gilt als unvermeidlich und kann
-sich auf andere Dienste auswirken, die von dem ausgefallenen Dienst abhängig sind.
+sich auf andere Dienste auswirken, die von dem ausgefallenen Dienst abhängig sind~\cite{Haley.28.06.2018,Montesi.19.09.2016}.
 Es entsteht das Konzept des kaskadierenden Ausfalls, bei dem der Ausfall eines Dienstes
 zu einem Dominoeffekt führen kann, der andere miteinander verbundene Dienste ebenfalls in
 Mitleidenschaft zieht.
@@ -33,7 +32,7 @@ von Unreaktivität zeigt, sollten die Anrufer sofort aufhören, auf ihn zu warte
 und die Situation in der Annahme behandeln, dass der Dienst möglicherweise nicht verfügbar ist.
 
 Circuit-Breaker spielen eine entscheidende Rolle bei der Verbesserung der Stabilität und
-Belastbarkeit sowohl von Kunden als auch von Diensten innerhalb einer MSA\@.
+Belastbarkeit von Diensten innerhalb einer MSA\@.
 Clients sind in der Lage, die Verschwendung von Ressourcen für nicht reagierende Dienste zu vermeiden,
 indem sie Fehler schnell erkennen und ihre Aktionen entsprechend anpassen.
 Gleichzeitig wird überlasteten Diensten die Möglichkeit gegeben, sich zu erholen,
@@ -55,7 +54,7 @@ der miteinander verbundenen Dienste.
 
 \paragraph{Deployment}
 
-In dem Paper werden drei verschiedene Ansätze für die Implementierung von Circuit-Breaker
+In diesem Paper werden drei verschiedene Ansätze für die Implementierung von Circuit-Breaker
 in einer MSA diskutiert.
 
 Der Circuit-Breaker wird in der Regel innerhalb der Clients eingesetzt,
@@ -83,7 +82,7 @@ bei dem der Proxy die Kommunikation zwischen Clients und Diensten überwachen un
 Dieser Ansatz kann von Vorteil sein, wenn die Clients nicht so verändert werden können,
 dass sie Circuit-Breaker enthalten, oder wenn die Dienste nicht unter der Kontrolle der Anwendungsentwickler stehen.
 
-Die Autoren schlagen vor, dass praktische Anwendungen diese verschiedenen Einsatzstrategien
+\citet{Montesi.19.09.2016} schlagen vor, dass praktische Anwendungen diese verschiedenen Einsatzstrategien
 kombinieren sollten, um die besten Ergebnisse zu erzielen.
 Durch die Verwendung einer Kombination aus clientseitigen, dienstseitigen und proxy-basierten Circuit-Breaker
 kann die Anwendung von den Vorteilen jedes Ansatzes profitieren und ihre jeweiligen Nachteile abmildern.
@@ -94,7 +93,7 @@ die die allgemeine Ausfallsicherheit und Verfügbarkeit des Systems verbessern k
 Der erste Ansatz ist der diensteseitige Circuit-Breaker, bei dem der Circuit-Breaker im Dienst selbst implementiert ist.
 Dieser Ansatz hat den Vorteil, dass keine Annahmen über das Verhalten des Clients getroffen werden müssen,
 da der Dienst die volle Kontrolle über den Circuit-Breaker hat.
-Es erfordert jedoch eine Änderung des Quellcodes des Dienstes und verbraucht die eigenen Ressourcen des Dienstes,
+Er erfordert jedoch eine Änderung des Quellcodes des Dienstes und verbraucht die eigenen Ressourcen des Dienstes,
 um den Circuit Breaker auszuführen.
 Ein Vorteil dieses Ansatzes ist, dass der Dienst auf aggregierte Informationen über seine eigene Reaktionsfähigkeit
 über alle Clients hinweg zugreifen kann.
@@ -111,6 +110,7 @@ vor fehlerhaften Diensten abschirmt.
 Allerdings führt der Proxy zu einem potenziellen Engpass im Netzwerk,
 der möglicherweise durch den Einsatz mehrerer Proxys behoben werden muss.
 
+% TODO Die drei Ansätze fett
 Insgesamt bieten die drei vorgestellten Ansätze unterschiedliche Kompromisse in Bezug auf die Komplexität der Implementierung,
 die Ressourcennutzung und den Grad des Schutzes, der den Clients und Diensten geboten wird.
 
@@ -123,7 +123,7 @@ während die Python-Bibliothek \textit{pybreaker} eine ähnliche Funktionalität
 Python-Code in eine Prozedur zu verpacken, die von einem Circuit-Breaker gesteuert wird.
 Diese Bibliothek hilft, den Ausfall von abhängigen Diensten oder Komponenten durch Überlastung
 oder Fehler zu vermeiden und unterstützt Funktionen wie Fehlerzählung,
-Zustandsüberwachung (geschlossen, geöffnet, halb geöffnet) und benutzerdefinierte Rückfallstrategien. % Quelle?
+Zustandsüberwachung und benutzerdefinierte Rückfallstrategien. % Quelle?
 \textit{Pybreaker} unterstützt sowohl Client- als auch Dienstseitige Circuit-Breaker.
 
 
