@@ -3,7 +3,7 @@ name: Build and Commit LaTeX Document
 on:
   push:
     branches:
-      - main
+      - presentation
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       - name: Build LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
+          root_file: presentation.tex
 
       - name: Clone target repository
         run: |
@@ -27,13 +27,13 @@ jobs:
 
       - name: Copy built PDF to target repository
         run: |
-          cp main.pdf target_repo/05-resilienz-verteilte-systeme.pdf
+          cp presentation.pdf target_repo/05-folien-resilienz-verteilte-systeme.pdf
 
       - name: Commit and push to target repository
         run: |
           cd target_repo
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add 05-resilienz-verteilte-systeme.pdf
-          git commit -m "Update Belegarbeit (PDF)"
+          git add 05-folien-resilienz-verteilte-systeme.pdf
+          git commit -m "Update Presentation (PDF)"
           git push origin main
