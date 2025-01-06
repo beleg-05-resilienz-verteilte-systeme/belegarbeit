@@ -29,7 +29,7 @@ Um eine effektive Lastverteilung zu ermöglichen reicht diese Information jedoch
 Es ist ersichtlich, dass ein pures Aufteilen der Anfragen auf die Serviceknoten ohne Einsicht in deren Zustände nicht sinnvoll ist. Aus diesem Grund wird die Service Registry erweitert um sogenannte \textit{Health Checks}: Jede Serviceinstanz kommuniziert ihre Auslastung und etwaige Fehler, und der Lastverteiler kann daraufhin sinnvolle Entscheidungen treffen.
 %In beiden Fällen würde die Lastverteilung 
 
-\subsubsection{Strategien der Lastverteilung}
+\subsubsection{Strategien der Lastverteilung}\label{sec:loadbalancing-strats}
 Die Auswahl eines Serviceknoten bei der Lastverteilung kann prinzipiell auf zwei Wege erfolgen. Bei der statischen Lastverteilung wird die aktuelle, tatsächliche Auslastung eines Knoten nicht beachtet, die Last wird stattdessen \glq blind\grq\ verteilt, und lediglich das Bereitsein der Knoten wird berücksichtigt \cite{mishra.2020}. Beispiele statischer Strategien sind Round Robin, bei welcher anstehende Aufgaben zyklisch auf die Instanzen verteilt werden, oder das Load Balancing mit Hashing der Anfragen-IP-Adresse, bei welcher die Serviceknoten praktisch zufällig gewählt werden während mehrere Anfragen der gleichen Quelle immer auf dem gleichen Serviceknoten verarbeitet werden \cite{g4g-loadbalancing}.
 \todo{im vergleich redundanz/partit./skal. bewerten}
 
