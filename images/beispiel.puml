@@ -1,0 +1,109 @@
+@startuml
+!pragma svgSize <U+1F610> XX
+title Architekturdiagramm mit Circuit Breaker Proxy und Load Balancer für Netflix
+
+skinparam componentStyle rectangle
+
+skinparam package {
+  BackgroundColor<<DNS>> #E0F7FA
+  BorderColor<<DNS>> #00796B
+  BackgroundColor<<Namespace1>> #F3E5F5
+  BorderColor<<Namespace1>> #6A1B9A
+  BackgroundColor<<Namespace2>> #FFF3E0
+  BorderColor<<Namespace2>> #E65100
+}
+
+package "Clients" {
+  [Client 1]
+  [Client 2]
+  [Client 3]
+  [...]
+}
+
+package "DNS Layer" <<DNS>> {
+  component "DNS Load Balancer" as DLB {
+    note top of DLB
+      DNS-basierte Lastverteilung
+      Verweist auf passende Namespaces anhand
+      Regeln wie Round Robin und Geolocation.
+    end note
+  }
+}
+
+package "Namespace ns-1372.dns-eu.netflix.com" <<Namespace1>> {
+
+    package "Ingress Load Balancer" as ILB1 {
+      component "Load Balancer" as LB
+      component "Circuit Breaker Proxy" as CBP
+    }
+
+    package "PlaybackService API (public)" as PBS1 {
+      component "PlaybackService 1 (stateless)" as PS1
+      component "PlaybackService 2 (stateless)" as PS2
+      component "..." as PS3
+    }
+
+    package "Recommendation Load Balancer"as RLB1 {
+      component "Load Balancer" as LB2
+      component "Circuit Breaker Proxy" as CBP2
+    }
+
+    package "ContentRecommendationService API (private)" as CRS1 {
+      component "ContentRecommendationService 1 (stateless)" as CS1
+      component "ContentRecommendationService 2 (stateless)" as CS2
+      component "..." as CS3
+    }
+}
+
+package "Namespace ns-0471.dns-us.netflix.com" <<Namespace2>> {
+
+    package "Ingress Load Balancer" as ILB2 {
+      component "Load Balancer" as LB_
+      component "Circuit Breaker Proxy" as CBP_
+    }
+
+    package "PlaybackService API (public)" as PBS2 {
+      component "PlaybackService 1 (stateless)" as PS1_
+      component "PlaybackService 2 (stateless)" as PS2_
+      component "..." as PS3_
+    }
+
+    package "Recommendation Load Balancer" as RLB2 {
+      component "Load Balancer" as LB2_
+      component "Circuit Breaker Proxy" as CBP2_
+    }
+
+    package "ContentRecommendationService API (private)" as CRS2 {
+      component "ContentRecommendationService 1 (stateless)" as CS1_
+      component "ContentRecommendationService 2 (stateless)" as CS2_
+      component "..." as CS3_
+    }
+}
+
+[Client 1] --> DLB : DNS Request\nto netflix.de
+[Client 2] --> DLB : DNS Request\nto netflix.fr
+[Client 3] --> DLB : DNS Request\nto netflix.com
+DLB --> LB : Resolve to dns-eu.netflix.com
+DLB --> LB_ : Resolve to dns-us.netflix.com
+
+
+LB -down-> CBP : Forward Request
+CBP -down-> PS1 : Handle Request
+CBP -down-> PS2 : Handle Request
+PS1 --> LB2 : Request
+PS2 --> LB2 : Request
+LB2 -down-> CBP2 : Forward Request
+CBP2 -down-> CS1 : Handle Request
+CBP2 -down-> CS2 : Handle Request
+
+
+LB_ -down-> CBP_ : Forward Request
+CBP_ -down-> PS1_ : Handle Request
+CBP_ -down-> PS2_ : Handle Request
+PS1_ --> LB2_ : Request
+PS2_ --> LB2_ : Request
+LB2_ -down-> CBP2_ : Forward Request
+CBP2_ -down-> CS1_ : Handle Request
+CBP2_ -down-> CS2_ : Handle Request
+
+@enduml
