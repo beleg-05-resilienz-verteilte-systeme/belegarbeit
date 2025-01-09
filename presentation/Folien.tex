@@ -1,7 +1,15 @@
-\section{Worum geht es? Auf einen Blick}
+\section{Resilienz und Fehlertoleranz}
+\subsection{Begriffsklärung}
+\subsection{Motivation}
+
+\section{Strategien}
+\subsection{Resilienzstrategien}
+\subsection{Fehlertoleranzstrategien}
 
 \begin{frame}
-    \frametitle{Worum geht es? Auf einen Blick}
+    \frametitle{\insertsection}
+    
+    \
     \begin{itemize}
         \item<1-> Strategien zur Resilienzsteigerung in verteilten Systemen
         \item<2-> Fehlertoleranz und Ausfallsicherheit
@@ -10,10 +18,11 @@
     \end{itemize}
 \end{frame}
 
-\section{Einleitung und Motivation}
+%\section{Einleitung und Motivation}
 
 \begin{frame}
     \frametitle{Einleitung und Motivation}
+    
     \begin{block}{Motivation}
         \begin{itemize}
             \item Schutz vor Ausfällen in geschäftskritischen Anwendungen
@@ -32,7 +41,7 @@
     \end{itemize}
 \end{frame}
 
-\section{Resilienz- und Fehlertoleranzstrategien}
+%\section{Resilienz- und Fehlertoleranzstrategien}
 
 \begin{frame}
     \frametitle{Resilienzstrategien}
@@ -52,14 +61,15 @@
     \end{itemize}
 \end{frame}
 
-\section{Pattern und Konzepte}
+%\section{Pattern und Konzepte}
 
-\subsection{Circuit-Breaker}
+%\subsection{Circuit-Breaker}
 
 \begin{frame}
     \frametitle{Circuit-Breaker}
     \begin{itemize}
-        \item Isoliert fehlerhafte Dienste
+        \item Isoliert fehlerhaftxe Dienste
+        \item Unterbricht Anfragen bei wiederholtem Fehler.
         \item Verhindert kaskadierende Ausfälle
     \end{itemize}
 \end{frame}
@@ -97,15 +107,26 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Implementierung von Circuit-Breakern}
+    \frametitle{Circuit-Breaker: Vorteile}
     \begin{itemize}
-        \item Client-seitige Implementierung
-        \item Dienst-seitige Implementierung
-        \item Proxy-basierte Lösungen
+        \item Verhindert kaskadierende Ausfälle in verteilten Systemen.
+        \item Verbesserte Systemstabilität durch Isolierung fehlerhafter Dienste.
+        \item Bessere Benutzererfahrung durch Fallback-Mechanismen.
+        \item Unterstützt Resilienz und Wiederherstellung in kritischen Systemen.
     \end{itemize}
 \end{frame}
 
-\subsection{Retry-Muster}
+\begin{frame}
+    \frametitle{Circuit-Breaker: Nachteile}
+    \begin{itemize}
+        \item Erhöhte Komplexität in der Implementierung und Wartung.
+        \item Risiko von Fehlkonfiguration (z. B. falsche Schwellenwerte).
+        \item Zusätzlicher Overhead durch Überwachung und Statusverwaltung.
+        \item Fallback-Daten können veraltet oder ungenau sein.
+    \end{itemize}
+\end{frame}
+
+%\subsection{Retry-Muster}
 
 \begin{frame}
     \frametitle{Retry-Muster}
@@ -125,6 +146,26 @@
     \end{figure}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Retry-Muster: Vorteile}
+    \begin{itemize}
+    \item Reduziert die Wahrscheinlichkeit eines vollständigen Anwendungsabsturzes bei vorübergehenden Fehlern.
+    \item Verbessert die Zuverlässigkeit, indem kurzfristige Probleme (z. B. Netzwerkprobleme) automatisch überwunden werden.
+    \item Ermöglicht ein einheitliches Fehlerbehandlungsmodell in einer Anwendung.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Retry-Muster: Nachteile}
+    \begin{itemize}
+        \item Erhöhte Komplexität in der Implementierung und Wartung.
+        \item Verzögert die Gesamtverarbeitung, wenn ein Vorgang wiederholt fehlschlägt.
+        \item Kann echte, dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren.
+        \item Nicht jeder Fehler ist vorübergehend (z. B. Authentifizierungsfehler), was zu unnötigen Wiederholungen führt.
+    \end{itemize}
+\end{frame}
+
 \begin{frame}
     \frametitle{Kombination mit Circuit-Breaker}
     \begin{itemize}
@@ -134,7 +175,7 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Load Balancing}
+%\subsection{Load Balancing}
 
 \begin{frame}
     \frametitle{Load Balancing}
@@ -164,7 +205,7 @@
     \end{itemize}
 \end{frame}
 
-\section{Was wurde gemacht?}
+\section{Fazit}
 
 \begin{frame}
     \frametitle{Was wurde gemacht?}
@@ -184,7 +225,7 @@
     \end{itemize}
 \end{frame}
 
-\section{Fazit und Ausblick}
+%\section{Fazit und Ausblick}
 
 \begin{frame}
     \frametitle{Fazit}
@@ -195,11 +236,22 @@
     \end{itemize}
 \end{frame}
 
+\section{Diskussion}
+
 \begin{frame}
-    \frametitle{Ausblick}
+    \frametitle{Diskussion}
     \begin{itemize}
         \item Erweiterung der Strategien auf andere Szenarien
         \item Entwicklung neuer Muster zur Resilienzsteigerung
         \item Untersuchung ökonomischer Auswirkungen
+    \end{itemize}
+\end{frame}
+
+\section{Quellen}
+
+\begin{frame}
+    \frametitle{Quellen}
+    \begin{itemize}
+        \item 
     \end{itemize}
 \end{frame}
