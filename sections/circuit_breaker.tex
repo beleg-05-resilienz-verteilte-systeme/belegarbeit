@@ -57,7 +57,7 @@ der miteinander verbundenen Dienste.
 In diesem Paper werden drei verschiedene Ansätze für die Implementierung von Circuit-Breaker
 in einer MSA diskutiert.
 
-Der Circuit-Breaker wird in der Regel innerhalb der Clients eingesetzt,
+Der Circuit-Breaker wird in der Regel innerhalb der \textbf{Clients} eingesetzt,
 wo er Aufrufe an externe Dienste abfängt.
 Diese Strategie verhindert, dass Nachrichten den Zieldienst erreichen, wenn der
 Leistungsschalter geöffnet ist, wodurch die Notwendigkeit ähnlicher
@@ -68,7 +68,7 @@ Der Nachteil besteht darin, dass das Verfügbarkeitswissen eines Dienstes auf de
 sodass regelmäßige Pings erforderlich sind, um den Dienstintegritätsstatus abzufragen.
 
 Eine alternative Implementierungsstrategie besteht darin,
-Circuit-Breaker auf der Seite der Dienste oder in Proxys zwischen Kunden und Diensten einzuführen.
+Circuit-Breaker auf der Seite der \textbf{Dienste} oder in \textbf{Proxys} zwischen Kunden und Diensten einzuführen.
 Dieser Ansatz hat seine eigenen Vor- und Nachteile.
 Wenn der Circuit-Breaker auf der Seite des Dienstes platziert ist,
 kann er den Dienst davor schützen, durch fehlgeschlagene Anfragen von mehreren Clients überfordert zu werden.
@@ -79,28 +79,6 @@ auf der Grundlage der Interaktionen einzelner Clients haben.
 Die Platzierung von Circuit-Breaker in Proxys zwischen Clients und Diensten
 kann einen Mittelweg darstellen,
 bei dem der Proxy die Kommunikation zwischen Clients und Diensten überwachen und steuern kann.
-Dieser Ansatz kann von Vorteil sein, wenn die Clients nicht so verändert werden können,
-dass sie Circuit-Breaker enthalten, oder wenn die Dienste nicht unter der Kontrolle der Anwendungsentwickler stehen.
-
-\citet{Montesi.19.09.2016} schlagen vor, dass praktische Anwendungen diese verschiedenen Einsatzstrategien
-kombinieren sollten, um die besten Ergebnisse zu erzielen.
-Durch die Verwendung einer Kombination aus clientseitigen, dienstseitigen und proxy-basierten Circuit-Breaker
-kann die Anwendung von den Vorteilen jedes Ansatzes profitieren und ihre jeweiligen Nachteile abmildern.
-Diese Flexibilität bei der Bereitstellung ermöglicht eine robustere und effektivere Implementierung von Circuit-Breaker,
-die die allgemeine Ausfallsicherheit und Verfügbarkeit des Systems verbessern kann.
-
-
-Der erste Ansatz ist der dienstseitige Circuit-Breaker, bei dem der Circuit-Breaker im Dienst selbst implementiert ist.
-Dieser Ansatz hat den Vorteil, dass keine Annahmen über das Verhalten des Clients getroffen werden müssen,
-da der Dienst die volle Kontrolle über den Circuit-Breaker hat.
-Er erfordert jedoch eine Änderung des Quellcodes des Dienstes und verbraucht die eigenen Ressourcen des Dienstes,
-um den Circuit Breaker auszuführen.
-Ein Vorteil dieses Ansatzes ist, dass der Dienst auf aggregierte Informationen über seine eigene Reaktionsfähigkeit
-über alle Clients hinweg zugreifen kann.
-
-Der zweite Ansatz ist der Proxy-Circuit-Breaker,
-bei dem der Circuit-Breaker in einem Proxy-Dienst eingesetzt wird, der sich zwischen den Clients und den
-Zieldiensten befindet.
 Dieser Proxy enthält für jedes Client-Dienst-Paar einen separaten Circuit-Breaker, der Anfragen nur dann zulässt,
 wenn sowohl der Client- als auch der Dienst-Circuit-Breaker geschlossen sind.
 Dieser Ansatz hat den Vorteil, dass keine Änderungen am Client- oder Dienstcode erforderlich sind,
@@ -110,14 +88,20 @@ vor fehlerhaften Diensten abschirmt.
 Allerdings führt der Proxy zu einem potenziellen Engpass im Netzwerk,
 der möglicherweise durch den Einsatz mehrerer Proxys behoben werden muss.
 
-% TODO Die drei Ansätze fett
+\citet{Montesi.19.09.2016} schlagen vor, dass praktische Anwendungen diese verschiedenen Einsatzstrategien
+kombinieren sollten, um die besten Ergebnisse zu erzielen.
+Durch die Verwendung einer Kombination aus clientseitigen, dienstseitigen und proxy-basierten Circuit-Breaker
+kann die Anwendung von den Vorteilen jedes Ansatzes profitieren und ihre jeweiligen Nachteile abmildern.
+Diese Flexibilität bei der Bereitstellung ermöglicht eine robustere und effektivere Implementierung von Circuit-Breaker,
+die die allgemeine Ausfallsicherheit und Verfügbarkeit des Systems verbessern kann.
+
 Insgesamt bieten die drei vorgestellten Ansätze unterschiedliche Kompromisse in Bezug auf die Komplexität der Implementierung,
 die Ressourcennutzung und den Grad des Schutzes, der den Clients und Diensten geboten wird.
 
 \paragraph{Implementation}
 
 
-Eine der bekanntesten Implementierungen von Circuit-Breaker wird von der Hystrix-Bibliothek inspiriert,
+Eine der bekanntesten Implementierungen von Circuit-Breaker ist die Hystrix-Bibliothek für Java,
 während die Python-Bibliothek \textit{pybreaker} eine ähnliche Funktionalität bietet.
 \textit{Pybreaker} ist eine flexible und leichtgewichtige Bibliothek, die es ermöglicht,
 Python-Code in eine Prozedur zu verpacken, die von einem Circuit-Breaker gesteuert wird.
@@ -155,8 +139,9 @@ reached$]$}};
 \path[]	(closed)   edge[loop, in=60,out=120, looseness=3,<-] node[above]  {\textit{success}} (closed);
 \path[]	(closed)   edge[loop, in=240,out=300, looseness=3,<-] node[below]  {\textit{fail}} (closed);
 \end{tikzpicture}
-\caption{Circuit Breaker Zustandsdiagramm nach \cite{Montesi.19.09.2016}.}
+\caption{Circuit Breaker Zustandsdiagramm nach~\cite{Montesi.19.09.2016}.}
 \label{cb-fsm}
+\Description{Circuit Breaker Zustandsdiagramm: closed/open/half-open}
 \end{figure}
 
 Je nach Zustand (geschlossen, offen oder halboffen) werden unterschiedliche
