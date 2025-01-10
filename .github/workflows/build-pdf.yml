@@ -1,4 +1,4 @@
-name: Build and Commit LaTeX Document
+name: Build and Commit Belegarbeit
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Copy built PDF to target repository
         run: |
-          cp main.pdf target_repo/05-resilienz-verteilte-systeme.pdf
+          cp belegarbeit/main.pdf target_repo/05-resilienz-verteilte-systeme.pdf
 
       - name: Commit and push to target repository
         run: |
