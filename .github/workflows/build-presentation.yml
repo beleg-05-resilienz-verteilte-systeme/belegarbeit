@@ -17,7 +17,7 @@ jobs:
       - name: Build LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: presentation/presentation.tex
+          root_file: presentation.tex
           working_directory: presentation
           latexmk_shell_escape: true
           extra_system_packages: "inkscape"
