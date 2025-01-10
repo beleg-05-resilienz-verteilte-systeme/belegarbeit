@@ -8,7 +8,6 @@ on:
 
 jobs:
   build-and-commit:
-    if: ${{ contains(github.event.head_commit.message, 'belegarbeit/') }}
     runs-on: ubuntu-latest
 
     steps:
