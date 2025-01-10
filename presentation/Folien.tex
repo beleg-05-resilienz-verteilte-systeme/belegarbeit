@@ -1,28 +1,36 @@
+%\begin{frame}
+%    \frametitle{\insertsection}
+%    \framesubtitle{\insertsubsection}
+%
+%    \begin{itemize}
+%        \item<1-> Strategien zur Resilienzsteigerung in verteilten Systemen
+%        \item<2-> Fehlertoleranz und Ausfallsicherheit
+%        \item<3-> Praktische Implementierungen wie Circuit Breaker, Retry-Muster
+%        \item<4-> Ziel: Absicherung moderner Anwendungen gegen Störungen
+%    \end{itemize}
+%\end{frame}
+
 \section{Resilienz und Fehlertoleranz}
 \subsection{Begriffsklärung}
-\subsection{Motivation}
-
-\section{Strategien}
-\subsection{Resilienzstrategien}
-\subsection{Fehlertoleranzstrategien}
 
 \begin{frame}
     \frametitle{\insertsection}
-    
-    \
-    \begin{itemize}
-        \item<1-> Strategien zur Resilienzsteigerung in verteilten Systemen
-        \item<2-> Fehlertoleranz und Ausfallsicherheit
-        \item<3-> Praktische Implementierungen wie Circuit Breaker, Retry-Muster
-        \item<4-> Ziel: Absicherung moderner Anwendungen gegen Störungen
-    \end{itemize}
-\end{frame}
+    \framesubtitle{\insertsubsection}
 
-%\section{Einleitung und Motivation}
+    \begin{block}{Motivation}
+        \begin{itemize}
+
+        \end{itemize}
+    \end{block}
+\end{frame}
+%...
+
+\subsection{Motivation}
 
 \begin{frame}
-    \frametitle{Einleitung und Motivation}
-    
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{block}{Motivation}
         \begin{itemize}
             \item Schutz vor Ausfällen in geschäftskritischen Anwendungen
@@ -33,7 +41,9 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Technologische Entwicklungen}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Verbreitung von Microservices und Cloud-Technologien
         \item Herausforderungen durch Kommunikationsausfälle und Spitzenlasten
@@ -41,10 +51,12 @@
     \end{itemize}
 \end{frame}
 
-%\section{Resilienz- und Fehlertoleranzstrategien}
-
+\section{Strategien}
+\subsection{Resilienzstrategien}
 \begin{frame}
-    \frametitle{Resilienzstrategien}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Redundanz
         \item Partitionierung
@@ -52,8 +64,12 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Fehlertoleranzstrategien}
+
 \begin{frame}
-    \frametitle{Fehlertoleranzstrategien}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Fehlerbehandlung und -isolierung
         \item Nutzung von Fallback-Mechanismen
@@ -61,12 +77,13 @@
     \end{itemize}
 \end{frame}
 
-%\section{Pattern und Konzepte}
-
-%\subsection{Circuit-Breaker}
+\section{Pattern und Konzepte}
+\subsection{Circuit-Breaker}
 
 \begin{frame}
-    \frametitle{Circuit-Breaker}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Isoliert fehlerhaftxe Dienste
         \item Unterbricht Anfragen bei wiederholtem Fehler.
@@ -74,8 +91,11 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Circuit-Breaker: Zustandsdiagramm}
 \begin{frame}
-    \frametitle{Circuit-Breaker: Zustandsdiagramm}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{figure}
         \pgfdeclarelayer{background}
         \pgfdeclarelayer{foreground}
@@ -106,8 +126,11 @@
     \end{figure}
 \end{frame}
 
+\subsection{Circuit-Breaker: Vorteile}
 \begin{frame}
-    \frametitle{Circuit-Breaker: Vorteile}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Verhindert kaskadierende Ausfälle in verteilten Systemen.
         \item Verbesserte Systemstabilität durch Isolierung fehlerhafter Dienste.
@@ -116,8 +139,11 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Circuit-Breaker: Nachteile}
 \begin{frame}
-    \frametitle{Circuit-Breaker: Nachteile}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Erhöhte Komplexität in der Implementierung und Wartung.
         \item Risiko von Fehlkonfiguration (z. B. falsche Schwellenwerte).
@@ -126,10 +152,11 @@
     \end{itemize}
 \end{frame}
 
-%\subsection{Retry-Muster}
-
+\subsection{Retry-Muster}
 \begin{frame}
-    \frametitle{Retry-Muster}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Automatisches Wiederholen fehlgeschlagener Operationen
         \item Nutzung von Exponential Backoff
@@ -137,8 +164,11 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Retry-Muster: Sequenzdiagramm}
 \begin{frame}
-    \frametitle{Retry-Muster: Sequenzdiagramm}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{figure}[h]
         \centering
         \includegraphics[height=0.5\textheight]{images/retry-pattern}
@@ -146,9 +176,11 @@
     \end{figure}
 \end{frame}
 
-
+\subsection{Retry-Muster: Vorteile}
 \begin{frame}
-    \frametitle{Retry-Muster: Vorteile}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
     \item Reduziert die Wahrscheinlichkeit eines vollständigen Anwendungsabsturzes bei vorübergehenden Fehlern.
     \item Verbessert die Zuverlässigkeit, indem kurzfristige Probleme (z. B. Netzwerkprobleme) automatisch überwunden werden.
@@ -156,8 +188,11 @@
 \end{itemize}
 \end{frame}
 
+\subsection{Retry-Muster: Nachteile}
 \begin{frame}
-    \frametitle{Retry-Muster: Nachteile}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Erhöhte Komplexität in der Implementierung und Wartung.
         \item Verzögert die Gesamtverarbeitung, wenn ein Vorgang wiederholt fehlschlägt.
@@ -166,8 +201,12 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Kombination mit Circuit-Breaker}
+
 \begin{frame}
-    \frametitle{Kombination mit Circuit-Breaker}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Stoppt Wiederholungen bei permanenten Fehlern
         \item Ermöglicht Systemen, sich zu erholen
@@ -175,10 +214,12 @@
     \end{itemize}
 \end{frame}
 
-%\subsection{Load Balancing}
+\subsection{Load Balancing}
 
 \begin{frame}
-    \frametitle{Load Balancing}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Verteilung der Last auf mehrere Server
         \item Strategien: Round Robin, Least Connection, Resource Based
@@ -186,8 +227,11 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Load Balancer: Architekturdiagramm}
 \begin{frame}
-    \frametitle{Load Balancer: Architekturdiagramm}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{figure}[h]
         \centering
         \includegraphics[height=0.5\textheight]{images/loadbalancer}
@@ -195,9 +239,11 @@
     \end{figure}
 \end{frame}
 
-
+\subsection{Health Checks bei Load Balancing}
 \begin{frame}
-    \frametitle{Health Checks bei Load Balancing}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Überwachung der Zustände von Diensten
         \item Vermeidung von Überlastungen
@@ -206,9 +252,12 @@
 \end{frame}
 
 \section{Fazit}
+\subsection{Was wurde gemacht?}
 
 \begin{frame}
-    \frametitle{Was wurde gemacht?}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Analyse und Implementierung von Resilienzstrategien
         \item Fallstudien und Praxisbeispiele
@@ -216,8 +265,11 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Fallstudie: Netflix}
 \begin{frame}
-    \frametitle{Fallstudie: Netflix}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Nutzung von Hystrix für Circuit-Breaker
         \item Dynamisches Load Balancing
@@ -225,21 +277,25 @@
     \end{itemize}
 \end{frame}
 
-%\section{Fazit und Ausblick}
-
-\begin{frame}
-    \frametitle{Fazit}
-    \begin{itemize}
-        \item Circuit Breaker und Retry-Muster als effektive Mechanismen
-        \item Kombination verschiedener Strategien verbessert Resilienz
-        \item Bedeutung von agilen Methoden zur kontinuierlichen Verbesserung
-    \end{itemize}
-\end{frame}
+%\section{Ausblick}
+%
+%\begin{frame}
+%    \frametitle{\insertsection}
+%    \framesubtitle{\insertsubsection}
+%
+%    \begin{itemize}
+%        \item Circuit Breaker und Retry-Muster als effektive Mechanismen
+%        \item Kombination verschiedener Strategien verbessert Resilienz
+%        \item Bedeutung von agilen Methoden zur kontinuierlichen Verbesserung
+%    \end{itemize}
+%\end{frame}
 
 \section{Diskussion}
 
 \begin{frame}
-    \frametitle{Diskussion}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
         \item Erweiterung der Strategien auf andere Szenarien
         \item Entwicklung neuer Muster zur Resilienzsteigerung
@@ -250,8 +306,10 @@
 \section{Quellen}
 
 \begin{frame}
-    \frametitle{Quellen}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
     \begin{itemize}
-        \item 
+        \item
     \end{itemize}
 \end{frame}
