@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-and-commit:
+    if: ${{ contains(github.event.head_commit.message, 'presentation/') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +31,7 @@ jobs:
 
       - name: Copy built PDF to target repository
         run: |
-          cp presentation.pdf target_repo/05-folien-resilienz-verteilte-systeme.pdf
+          cp presentation/presentation.pdf target_repo/05-folien-resilienz-verteilte-systeme.pdf
 
       - name: Commit and push to target repository
         run: |
