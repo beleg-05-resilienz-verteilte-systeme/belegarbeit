@@ -1,0 +1,124 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\documentclass[aspectratio=169, 15pt]{beamer}
+\usetheme[color=yellow, lang=de]{HTWK} %choose color from: cyan, green, navy, pink, yellow, choose lang from: en, de
+
+%export settings
+\setbeameroption{hide notes} % Only slides
+%\setbeameroption{show notes on second screen} % slides with notes
+
+
+\usepackage{booktabs} % für \toprule usw. in tables
+\usepackage{wasysym} % für Durchmesserzeichen \diameter
+\usepackage{makecell}
+\usepackage{multirow} % für \multirow
+\usepackage{threeparttable} % Für Fußnoten in Tabellen (tablenotes und measuredfigure)
+\usepackage{siunitx}
+\sisetup{locale=DE}
+\usepackage{fnbreak}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[inkscapearea=page]{svg}
+\usepackage{adjustbox}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{csquotes}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shadows}
+
+\input{Metadaten} 			% einbinden von persönlichen Daten
+
+\definecolor{amber}{rgb}{1.0, 0.49, 0.0}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{InterneLinkfarbe}{rgb}{0.1,0.1,0.3} 	% Farbliche Absetzung von externen Links
+\definecolor{ExterneLinkfarbe}{rgb}{0.1,0.1,0.7}	% Farbliche Absetzung von internen Links
+
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+% Definiere eine benutzerdefinierte Farbe "GrayBlue" für Python
+\definecolor{GrayBlue}{rgb}{0.4, 0.6, 0.8}
+
+% blue 85b8dc
+% green 7fc8a3
+% red e09396
+
+% Beispiel für eine Listings-Codeumbebungen
+% Bei mehreren Definitionen empfielt sich das auslagern in eine externe Datei
+\lstloadlanguages{Java,HTML,SQL,Python}
+\lstset{
+  frame=tb,
+  framesep=5pt,
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  keywordstyle=\ttfamily\bfseries\color{CadetBlue},
+  identifierstyle=\ttfamily,
+  stringstyle=\ttfamily\color{OliveGreen},
+  commentstyle=\color{GrayBlue},
+  rulecolor=\color{Gray},
+  xleftmargin=5pt,
+  xrightmargin=5pt,
+  aboveskip=\bigskipamount,
+  belowskip=\bigskipamount,
+  breaklines=true
+}
+
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+  basicstyle=\normalfont\ttfamily,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  backgroundcolor=\color{background},
+  literate=
+  *{0}{{{\color{numb}0}}}{1}
+    {1}{{{\color{numb}1}}}{1}
+    {2}{{{\color{numb}2}}}{1}
+    {3}{{{\color{numb}3}}}{1}
+    {4}{{{\color{numb}4}}}{1}
+    {5}{{{\color{numb}5}}}{1}
+    {6}{{{\color{numb}6}}}{1}
+    {7}{{{\color{numb}7}}}{1}
+    {8}{{{\color{numb}8}}}{1}
+    {9}{{{\color{numb}9}}}{1}
+    {:}{{{\color{punct}{:}}}}{1}
+    {,}{{{\color{punct}{,}}}}{1}
+    {\{}{{{\color{delim}{\{}}}}{1}
+    {\}}{{{\color{delim}{\}}}}}{1}
+    {[}{{{\color{delim}{[}}}}{1}
+    {]}{{{\color{delim}{]}}}}{1},
+}
+
+\setcounter{tocdepth}{1}
+
+%your presentation starts here
+\begin{document}
+  \begin{frame}[plain]
+    \titlepage{}
+  \end{frame}
+
+  \begin{frame}{Gliederung}
+    \tableofcontents
+  \end{frame}
+
+  \include{Folien}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
