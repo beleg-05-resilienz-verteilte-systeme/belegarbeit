@@ -1,4 +1,4 @@
-name: Build and Commit LaTeX Document
+name: Build and Commit Presentation
 
 on:
   push:
