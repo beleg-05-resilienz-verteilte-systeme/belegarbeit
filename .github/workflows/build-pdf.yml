@@ -17,6 +17,7 @@ jobs:
       - name: Build LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
+          working_directory: belegarbeit
           root_file: main.tex
           latexmk_shell_escape: true
           extra_system_packages: "inkscape"
