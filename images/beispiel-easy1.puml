@@ -1,0 +1,26 @@
+@startuml
+title Architekturdiagramm für Videostreaming-Platform
+
+skinparam componentStyle rectangle
+
+package "Clients" {
+  [Client 1]
+  [Client 2]
+  [Client 3]
+  [...]
+}
+
+package "PlaybackService API (public)" as PBS {
+  component "PlaybackService (stateless)" as PS
+}
+
+package "ContentRecommendationService API (private)" as CRS {
+  component "ContentRecommendationService (stateless)" as CS
+}
+
+[Client 1] -down-> PS : Handle Request
+[Client 2] -down-> PS : Handle Request
+[Client 3] -down-> PS : Handle Request
+PS -down-> CS : Handle Request
+
+@enduml
