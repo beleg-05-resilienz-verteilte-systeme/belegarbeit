@@ -31,28 +31,9 @@ package "ContentRecommendationService API (private)" as CRS {
 ' Darstellung der Störung
 PS ..[#FF0000,dashed,thickness=2]-> CS : ⚡ Netzwerkfehler
 
-@enduml
-
-
-
-
-package "PlaybackService API (public)" as PBS {
-  component "PlaybackService" as PS
-}
-
-package "ContentRecommendationService API (private)" as CRS {
-  component "ContentRecommendationService" as CS
-}
-
-[Client 1] -down-> PS
-[Client 2] -down-> PS : Handle Request
-[Client 3] -down-> PS
+'[Client 1] -down-> PS
+'[Client 2] -down-> PS : Handle Request
+'[Client 3] -down-> PS
 'PS -down-> CS : Handle Request
 
-' Darstellung der Störung
-PS ..[#FF0000,dashed,bold]-> CS : ⚡ Netzwerkfehler
-
-
-  [Client 1] -[dashed]- : ""
-  [Client 2] -[dashed]- : ""
-  [Client 3] -[dashed]- : ""
+@enduml
