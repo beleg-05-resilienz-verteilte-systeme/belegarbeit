@@ -11,6 +11,16 @@
 %\end{frame}
 
 \section{Resilienz und Fehlertoleranz}
+
+\subsection{Initiales Beispiel 1.}
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    % SVG beispiel-easy2.svg
+
+\end{frame}
+
 \subsection{Begriffsklärung}
 
 \begin{frame}
@@ -19,14 +29,44 @@
 
     \begin{block}{Begriffe}
         \begin{itemize}
-            \item Resilienz
+            \item \textbf{Resilienz}
                 \begin{itemize}
-                     \item Fähigkeit eines Systems, trotz Störungen, Angriffen oder Ausfällen funktionsfähig zu bleiben oder sich schnell davon zu erholen
+                     \item Funktionsfähigkeit trotz Störungen, Angriffen oder Ausfällen sowie schnelle Erholung
                 \end{itemize}
-            \item Fehlertoleranz
+            \item \textbf{Fehlertoleranz}
                 \begin{itemize}
-                    \item Fähigkeit eines Systems, trotz vorhandener Fehler oder Störungen korrekt zu funktionieren
+                    \item Korrektes Funktionieren trotz Fehlern oder Störungen
                 \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\subsection{Begriffsklärung - Zusammenhang}
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Zusammenhang}
+        \begin{itemize}
+            \item \textbf{Resilienz} = übergeordnetes Konzept, umfasst Fehlertoleranz sowie Aspekte wie Wiederherstellung, Anpassungsfähigkeit und präventive Maßnahmen
+            \item \textbf{Fehlertoleranz} = Fokus auf unmittelbarer Bewältigung von Fehlern während des Systembetriebs
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Begriffsklärung - Ursprung}
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Ursprung}
+        \begin{itemize}
+            \item beide Begriffe haben ihren Ursprung nicht in der Informatik
+            \item \textbf{Resilienz} aus dem Lateinischen \textit{resilire}, entspricht \glqq zurückspringen\grqq oder  \glqq abprallen\grqq
+            \item \textbf{Fehlertoleranz} aus den Ingenieurwissenschaften
         \end{itemize}
     \end{block}
 \end{frame}
@@ -40,26 +80,41 @@
 
     \begin{block}{Motivation}
         \begin{itemize}
-            \item Schutz vor Ausfällen in geschäftskritischen Anwendungen
-            \item Reduktion betrieblicher Kosten und Steigerung der Nutzerzufriedenheit
-            \item Anforderungen an Verfügbarkeit in regulierten Branchen
+            \item Störungen im laufenden Betrieb sollen verhindert werden
+            \item Zugunsten der Sicherheit, Kundenzufriedenheit etc.
+            %\item Disruption soll vermieden werden
+            %\item Reduktion betrieblicher Kosten und Steigerung der Nutzerzufriedenheit
+            %\item Anforderungen an Verfügbarkeit in regulierten Branchen
         \end{itemize}
     \end{block}
 \end{frame}
+
+%\begin{frame}
+%    \frametitle{\insertsection}
+%    \framesubtitle{\insertsubsection}
+%
+%    \begin{itemize}
+%        \item Verbreitung von Microservices und Cloud-Technologien
+%        \item Herausforderungen durch Kommunikationsausfälle und Spitzenlasten
+%        \item Bedarf an innovativen Resilienzmustern
+%    \end{itemize}
+%\end{frame}
+
+\subsection{Initiales Beispiel 2.}
 
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-        \item Verbreitung von Microservices und Cloud-Technologien
-        \item Herausforderungen durch Kommunikationsausfälle und Spitzenlasten
-        \item Bedarf an innovativen Resilienzmustern
+        \item wie können wir Resilienz und Fehlertoleranz am Beispiel weiterführen?
+        \item Zunächst natürlich grob, weil die Strategien und Pattern ja noch kommen.
     \end{itemize}
 \end{frame}
 
+
 \section{Strategien}
-\subsection{Resilienzstrategien}
+\subsection{\textbf{Resilienzstrategien}}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
@@ -71,7 +126,168 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Fehlertoleranzstrategien}
+\subsection{Resilienzstrategien: Redundanz}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Definition Redundanz}
+        Vervielfältigung kritischer Komponenten oder Funktionen zur Erhöhung der Zuverlässigkeit und Verfügbarkeit.\\
+        \begin{itemize}
+            \item Unterschiede in Arten der Redundanz und Ebenen der Redundanz.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Arten der Redundanz}
+        \begin{itemize}
+            \item Aktive Redundanz
+                \begin{itemize}
+                    \item Mehrere Komponenten arbeiten parallel
+                    \item Nahtloser Übergang bei Ausfall einer Komponente
+                \end{itemize}
+            \item Passive Redundanz
+                \begin{itemize}
+                    \item Redundante Komponenten im Standby.
+                    \item Aktivierung bei Ausfall der primären Komponente (mit Umschaltzeit)
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+
+ %Bild z.B. https://upload.wikimedia.org/wikipedia/commons/8/84/Apollo_15_descends_to_splashdown.jpg
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Ebenen der Redundanz}
+        \begin{itemize}
+            \item Software-Redundanz
+            \begin{itemize}
+                \item Mehrere Softwarekomponenten erfüllen dieselbe Funktion
+            \end{itemize}
+            \item Hardware-Redundanz
+            \begin{itemize}
+                \item Doppelte physische Komponenten (z. B. Netzteile, RAID-Systeme)
+            \end{itemize}
+            \item Daten-Redundanz
+            \begin{itemize}
+                \item Mehrfach gespeicherte Daten (z. B. Replikation, Backups)
+            \end{itemize}
+            \item Netzwerk-Redundanz
+            \begin{itemize}
+                \item Alternative Übertragungswege (z. B. redundante Router, Glasfaserverbindungen)
+            \end{itemize}
+            \item Geografische Redundanz
+            \begin{itemize}
+                \item Verteilung auf mehrere Standorte zur Minimierung großflächiger Ausfälle
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Resilienzstrategien: Partionierung}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Definition Partionierung}
+        Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten für Skalierbarkeit, Leistung und Flexibilität.\\
+        \begin{itemize}
+            \item Unterschiede in Arten der Partionierung.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Arten der Partionierung}
+        \begin{itemize}
+            \item Horizontale Partitionierung: Aufteilung von Datensätzen basierend auf einem Partitionsschlüssel
+            \item Vertikale Partitionierung: Gruppierung von Spalten einer Tabelle
+            \item Funktionale Partitionierung: Organisation nach Funktion oder Zweck der Daten
+            \item RANGE-Partitionierung: Unterteilung nach Wertebereichen (z. B. Zeit, Zahlen)
+            \item HASH-Partitionierung: Verteilung durch Hash-Funktion für gleichmäßige Last
+            \item Round-Robin Partitioning: Gleichmäßige, zyklische Datenverteilung
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Resilienzstrategien: Partitionierung}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+        \item Was ist das genau?
+        \item Wie funktioniert es?
+        \item Gerne mit Bild und/oder Code %Bild nicht gut aber z.B. https://www.flip-design.de/wp-content/uploads/2011/04/SQLServerPartitionierung.png
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Resilienzstrategien: Skalierung}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Definition Skalierung}
+Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
+        \begin{itemize}
+            \item Unterschiede in Arten der Skalierung bzw. Skalierbarkeit.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{block}{Arten der Skalierung}
+        \begin{itemize}
+            \item Vertikale Skalierung (Scale Up)
+            \begin{itemize}
+                \item Aufrüstung von Hardware (z. B. CPU, RAM) eines Systems
+                \item Begrenzung auf eine zentrale Einheit
+            \end{itemize}
+            \item Horizontale Skalierung (Scale Out):
+            \begin{itemize}
+                \item Hinzufügen von Servern oder Instanzen
+                \item Verteilte Last auf mehrere Einheiten
+            \end{itemize}
+            \item Automatische Skalierung:
+            \begin{itemize}
+                \item Dynamische Anpassung der Ressourcen
+                \item Häufig in Cloud-Umgebungen für optimierte Ressourcennutzung
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\subsection{Resilienzstrategien: Skalierung}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+        \item Was ist das genau?
+        \item Wie funktioniert es?
+        \item Gerne mit Bild und/oder Code %Bild z.B. https://www.shutterstock.com/search/scalability-logo
+    \end{itemize}
+\end{frame}
+
+
+\subsection{\textbf{Fehlertoleranzstrategien}}
 
 \begin{frame}
     \frametitle{\insertsection}
@@ -84,16 +300,53 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Fehlertoleranzstrategien: Fehlerbehandlung und -isolierung}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+        \item Was ist das genau?
+        \item Wie funktioniert es?
+        \item Gerne mit Bild und/oder Code
+    \end{itemize}
+\end{frame}
+
+\subsection{Fehlertoleranzstrategien: Nutzung von Fallback-Mechanismen}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+        \item Was ist das genau?
+        \item Wie funktioniert es?
+        \item Gerne mit Bild und/oder Code
+    \end{itemize}
+\end{frame}
+
+\subsection{Fehlertoleranzstrategien: Vermeidung kaskadierender Fehler}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+        \item hier eigene Folie überhaupt nötig?
+        \item Verweis auf oder Übergang zu Circuit-Breaker?
+        \item Gerne mit Bild und/oder Code
+    \end{itemize}
+\end{frame}
+
+
 \section{Pattern und Konzepte}
-\subsection{Circuit-Breaker}
+\subsection{\textbf{Circuit-Breaker}}
 
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-        \item Isoliert fehlerhaftxe Dienste
-        \item Unterbricht Anfragen bei wiederholtem Fehler.
+        \item Isoliert fehlerhafte Dienste
+        \item Unterbricht Anfragen bei wiederholtem Fehler
         \item Verhindert kaskadierende Ausfälle
     \end{itemize}
 \end{frame}
@@ -159,7 +412,14 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Retry-Muster}
+\subsection{Circuit-Breaker: großes Diagramm mit Anpassungen}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+\end{frame}
+
+\subsection{\textbf{Retry-Muster}}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
@@ -208,7 +468,7 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Kombination mit Circuit-Breaker}
+\subsection{\textbf{Kombination mit Circuit-Breaker}}
 
 \begin{frame}
     \frametitle{\insertsection}
@@ -221,7 +481,7 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Load Balancing}
+\subsection{\textbf{Load Balancing}}
 
 \begin{frame}
     \frametitle{\insertsection}
@@ -319,4 +579,16 @@
     \begin{itemize}
         \item
     \end{itemize}
+\end{frame}
+
+\section{Cheatsheet zum Lernen}
+
+\begin{frame}
+\frametitle{\insertsection}
+\framesubtitle{\insertsubsection}
+
+\begin{itemize}
+    \item TODO, damit hätten wir etwas, was noch keine Gruppe hat.
+    \item die wichtigsten Definitionen usw hier in kleinerer Schrift
+\end{itemize}
 \end{frame}
