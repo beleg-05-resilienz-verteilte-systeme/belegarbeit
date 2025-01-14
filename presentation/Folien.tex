@@ -479,9 +479,6 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
        		\item Network Load Balancer
        		\item Application Load Balancer
         	\item Hardware Load Balancer
-%            \item Round Robin
-%            \item Least Connection
-%            \item Resource Based
          \end{itemize}
     \end{block}
 \end{frame}
@@ -524,29 +521,12 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
         \begin{column}{0.6\textwidth}
         	\begin{figure}[h]
 	            \centering
-	            \captionsetup{aboveskip=0pt}
+	            \captionsetup{aboveskip=2pt}
 	            \includegraphics[width=.95\linewidth]{../images/loadbalancer}  
 	            \caption{Load Balancer mit Server Side Discovery}      		
         	\end{figure}
         \end{column}
     \end{columns}
-
-%	\begin{columns}[T]
-%		\begin{column}{0.5\textwidth}
-%			\begin{figure}[h]
-%			    \centering
-%			    \includegraphics[height=0.5\textheight]{../images/loadbalancer}
-%			    \caption{Architekturdiagramm mit einem zentalen Load Balancer}
-%			\end{figure}
-%		\end{column}
-%		\begin{column}[0.5\textwidth}
-%			\begin{itemize}
-%				\item bruh
-%			\end{itemize}
-%		\end{column}
-%	\end{columns}
-
-    
 \end{frame}
 
 \subsection{Load Balancing: statische Strategien}
@@ -566,7 +546,6 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \end{block}
 \end{frame}
 
-%\subsection{Load-Balancer: Strategien - Least Connection und Recource Based}
 \subsection{Load Balancing: dynamische Strategien}
 \begin{frame}
     \frametitle{\insertsection}
@@ -665,23 +644,78 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \end{itemize}
 \end{frame}
 
-\subsection{Load-Balancer: Strategien - DNS Round Robin}
+\subsection{Round Robin DNS}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    \begin{block}{Funktionsweise DNS Round Robin}
+    \begin{block}{Definition - was ist Round Robin DNS?}
     \begin{itemize}
-        \item Für einen Hostname werden mehrere IP-Adressen hinterlegt
-        \item DNS-Server gibt Adressen in rotierender Reihenfolge zurück
-        \item Verteilt so Lasten und erhöht Verfügbarkeit
+        \item Für eine Domain werden mehrere IP-Adressen hinterlegt
+        \item DNS-Server gibt alle Adressen in rotierender Reihenfolge zurück
+
+%        \item Verteilt so Lasten und erhöht Verfügbarkeit
+
         % https://www.cloudns.net/images/wiki/Round-Robin-DNS.png
     \end{itemize}
     \end{block}
-%    \begin{block}{Problem}
-%    \begin{itemize}
-%        \item Kann echte/dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren.
-%    \end{itemize}
-%    \end{block}
+    \begin{block}{Wirkung}
+    	\begin{itemize}
+    		\item Externes, statisches Load Balancing
+    		\item Verfügbarkeit auch bei Totalausfall eines Servers
+    	\end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{figure}[h]
+        \centering
+        \captionsetup{aboveskip=0pt}
+        \includegraphics[width=.7\textwidth]{../images/roundrobindns}
+        \caption{Round Robin DNS}
+    \end{figure}
+\end{frame}
+
+\subsection{Round Robin DNS: Vorteile}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \begin{itemize}
+    	\item Einfach zu implementieren
+    	\item Sticky Sessions by default
+    	\item Fallback auf eine andere IP-Adresse schützt auch bei einem Serverausfall
+    \end{itemize}
+\end{frame}
+
+\subsection{Round Robin DNS: Nachteile}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \begin{block}{Balancing}
+	    \begin{itemize}
+	    	\item Nur statische Lastverteilung ist möglich
+	    	\item Die Reihenfolge der IPs wird vom DNS ein Mal bestimmt, aber danach gecached
+	    	\begin{itemize}
+	    		\item Verteilung kann zufällig ungleich werden, da Balancing nur unregelmäßig erfolgt
+	    		\item Neue Server erst nach gewisser Zeit gleich stark ausgelastet
+	    	\end{itemize}
+	    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Failover-Verhalten}
+	    \begin{itemize}
+	    	\item Vom Client kontrolliert, nicht vom Server oder DNS
+	    	\begin{itemize}
+	    		\item Lange Wartezeiten bis zum Failover sind möglich
+	    	\end{itemize}
+	    \end{itemize}
+    \end{block}
+
 \end{frame}
 
 \section{Fazit}
@@ -787,7 +821,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
             Ausfallsicherheit.\\
             \textbf{Load-Balancing-Strategien}:
             \begin{itemize}
-                \item DNS Round Robin: rotierende Rückgabe von IP-Adressen
+                \item Round Robin DNS: rotierende Rückgabe von IP-Adressen
                 \item Least Connection: Aufgabe an Dienst mit den wenigsten aktiven Netzwerkverbindungen
             %    \item Recource Based: Aufgabe an Knoten mit geringster Auslastung
             \end{itemize}
