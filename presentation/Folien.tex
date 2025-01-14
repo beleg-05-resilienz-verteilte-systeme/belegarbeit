@@ -31,7 +31,7 @@
         \begin{itemize}
             \item \textbf{Resilienz}
                 \begin{itemize}
-                     \item Funktionsfähigkeit trotz Störungen, Angriffen oder Ausfällen sowie schnelle Erholung
+                     \item Funktionsfähigkeit trotz Störungen, Angriffen oder Ausfällen sowie schnelle Erholung\\
                 \end{itemize}
             \item \textbf{Fehlertoleranz}
                 \begin{itemize}
@@ -50,7 +50,7 @@
 
     \begin{block}{Zusammenhang}
         \begin{itemize}
-            \item \textbf{Resilienz} = übergeordnetes Konzept, umfasst Fehlertoleranz sowie Aspekte wie Wiederherstellung, Anpassungsfähigkeit und präventive Maßnahmen
+            \item \textbf{Resilienz} = übergeordnetes Konzept, umfasst Fehlertoleranz sowie Aspekte wie Wiederherstellung, Anpassungsfähigkeit und präventive Maßnahmen\\
             \item \textbf{Fehlertoleranz} = Fokus auf unmittelbarer Bewältigung von Fehlern während des Systembetriebs
         \end{itemize}
     \end{block}
@@ -62,13 +62,13 @@
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
-    \begin{block}{Ursprung}
+    %\begin{block}{Ursprung}
         \begin{itemize}
             \item beide Begriffe haben ihren Ursprung nicht in der Informatik
             \item \textbf{Resilienz} aus dem Lateinischen \textit{resilire}, entspricht \glqq zurückspringen\grqq oder  \glqq abprallen\grqq
             \item \textbf{Fehlertoleranz} aus den Ingenieurwissenschaften
         \end{itemize}
-    \end{block}
+    %\end{block}
 \end{frame}
 %...
 
@@ -140,10 +140,11 @@
 \end{frame}
 
 
+\subsection{Resilienzstrategien: Arten der Redundanz}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    \begin{block}{Arten der Redundanz}
+    % \begin{block}{Arten der Redundanz}
         \begin{itemize}
             \item Aktive Redundanz
                 \begin{itemize}
@@ -156,18 +157,19 @@
                     \item Aktivierung bei Ausfall der primären Komponente (mit Umschaltzeit)
                 \end{itemize}
         \end{itemize}
-    \end{block}
+   % \end{block}
 
  %Bild z.B. https://upload.wikimedia.org/wikipedia/commons/8/84/Apollo_15_descends_to_splashdown.jpg
 
 \end{frame}
 
 
+\subsection{Resilienzstrategien: Ebenen der Redundanz}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
-    \begin{block}{Ebenen der Redundanz}
+    %\begin{block}{Ebenen der Redundanz}
         \begin{itemize}
             \item Software-Redundanz
             \begin{itemize}
@@ -190,7 +192,7 @@
                 \item Verteilung auf mehrere Standorte zur Minimierung großflächiger Ausfälle
             \end{itemize}
         \end{itemize}
-    \end{block}
+   % \end{block}
 \end{frame}
 
 \subsection{Resilienzstrategien: Partionierung}
@@ -199,18 +201,16 @@
     \framesubtitle{\insertsubsection}
 
     \begin{block}{Definition Partionierung}
-        Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten für Skalierbarkeit, Leistung und Flexibilität.\\
-        \begin{itemize}
-            \item Unterschiede in Arten der Partionierung.
-        \end{itemize}
+        Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten für Skalierbarkeit, Leistung und Flexibilität.
     \end{block}
 \end{frame}
 
 
+\subsection{Resilienzstrategien: Arten der Partionierung}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    \begin{block}{Arten der Partionierung}
+  %  \begin{block}{Arten der Partionierung}
         \begin{itemize}
             \item Horizontale Partitionierung: Aufteilung von Datensätzen basierend auf einem Partitionsschlüssel
             \item Vertikale Partitionierung: Gruppierung von Spalten einer Tabelle
@@ -219,20 +219,10 @@
             \item HASH-Partitionierung: Verteilung durch Hash-Funktion für gleichmäßige Last
             \item Round-Robin Partitioning: Gleichmäßige, zyklische Datenverteilung
         \end{itemize}
-    \end{block}
+  %  \end{block}
 \end{frame}
 
-\subsection{Resilienzstrategien: Partitionierung}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Was ist das genau?
-        \item Wie funktioniert es?
-        \item Gerne mit Bild und/oder Code %Bild nicht gut aber z.B. https://www.flip-design.de/wp-content/uploads/2011/04/SQLServerPartitionierung.png
-    \end{itemize}
-\end{frame}
+% Bild Partitionierung nicht gut aber z.B. https://www.flip-design.de/wp-content/uploads/2011/04/SQLServerPartitionierung.png
 
 
 \subsection{Resilienzstrategien: Skalierung}
@@ -241,18 +231,16 @@
     \framesubtitle{\insertsubsection}
 
     \begin{block}{Definition Skalierung}
-Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
-        \begin{itemize}
-            \item Unterschiede in Arten der Skalierung bzw. Skalierbarkeit.
-        \end{itemize}
+Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \end{block}
 \end{frame}
 
+\subsection{Resilienzstrategien: Arten der Skalierung}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
-    \begin{block}{Arten der Skalierung}
+   %\begin{block}{Arten der Skalierung}
         \begin{itemize}
             \item Vertikale Skalierung (Scale Up)
             \begin{itemize}
@@ -270,69 +258,22 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
                 \item Häufig in Cloud-Umgebungen für optimierte Ressourcennutzung
             \end{itemize}
         \end{itemize}
-    \end{block}
+  %\end{block}
 \end{frame}
 
-
-\subsection{Resilienzstrategien: Skalierung}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Was ist das genau?
-        \item Wie funktioniert es?
-        \item Gerne mit Bild und/oder Code %Bild z.B. https://www.shutterstock.com/search/scalability-logo
-    \end{itemize}
-\end{frame}
+% Bild Skalierung z.B. https://www.shutterstock.com/search/scalability-logo
 
 
-\subsection{\textbf{Fehlertoleranzstrategien}}
+\subsection{\textbf{Pattern für Fehlertoleranzstrategien}}
 
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-        \item Fehlerbehandlung und -isolierung
+        \item Fehlerbehandlung und -isolierung mittels Retry-Pattern
         \item Nutzung von Fallback-Mechanismen
-        \item Vermeidung kaskadierender Fehler
-    \end{itemize}
-\end{frame}
-
-\subsection{Fehlertoleranzstrategien: Fehlerbehandlung und -isolierung}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Was ist das genau?
-        \item Wie funktioniert es?
-        \item Gerne mit Bild und/oder Code
-    \end{itemize}
-\end{frame}
-
-\subsection{Fehlertoleranzstrategien: Nutzung von Fallback-Mechanismen}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Was ist das genau?
-        \item Wie funktioniert es?
-        \item Gerne mit Bild und/oder Code
-    \end{itemize}
-\end{frame}
-
-\subsection{Fehlertoleranzstrategien: Vermeidung kaskadierender Fehler}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item hier eigene Folie überhaupt nötig?
-        \item Verweis auf oder Übergang zu Circuit-Breaker?
-        \item Gerne mit Bild und/oder Code
+        \item Vermeidung kaskadierender Fehler mittels Circuit-Breaker
     \end{itemize}
 \end{frame}
 
@@ -343,12 +284,18 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Isoliert fehlerhafte Dienste
-        \item Unterbricht Anfragen bei wiederholtem Fehler
-        \item Verhindert kaskadierende Ausfälle
-    \end{itemize}
+    \begin{block}{Definition - Was ist ein Circuit-Breaker?}
+        Entwurfsmuster zur Isolation fehlerhafter Dienste in verteilten Systemen, um Überlastung zu verhindern
+        und Stabilität zu gewährleisten.
+        % TODO das ist gerade noch ziemlich redundant (Definition, Aufgaben, Vorteile) geht vielleicht differenzierter
+    \end{block}
+    \begin{block}{Aufgaben}
+        \begin{itemize}
+            \item Isoliert fehlerhafte Dienste
+            \item Unterbricht Anfragen bei wiederholtem Fehler
+            \item Verhindert kaskadierende Ausfälle
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \subsection{Circuit-Breaker: Zustandsdiagramm}
@@ -386,16 +333,39 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
     \end{figure}
 \end{frame}
 
+
+\subsection{Circuit-Breaker: Implementierungsansätze}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+        \item Clientseitig
+        \begin{itemize}
+            \item Abfangen externer Anfragen vor der Weiterleitung
+        \end{itemize}
+        \item Dienstseitig
+        \begin{itemize}
+            \item Schutz des Dienstes vor Überlastung durch viele fehlerhafte Anfragen
+        \end{itemize}
+        \item Proxy-basiert
+        \begin{itemize}
+            \item Circuit-Breaker zwischen Clients und Diensten in Proxys platziert
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
 \subsection{Circuit-Breaker: Vorteile}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-        \item Verhindert kaskadierende Ausfälle in verteilten Systemen.
-        \item Verbesserte Systemstabilität durch Isolierung fehlerhafter Dienste.
-        \item Bessere Benutzererfahrung durch Fallback-Mechanismen.
-        \item Unterstützt Resilienz und Wiederherstellung in kritischen Systemen.
+        \item Verhindert kaskadierende Ausfälle in verteilten Systemen
+        \item Verbesserte Systemstabilität durch Isolierung fehlerhafter Dienste
+        \item Bessere Benutzererfahrung durch Fallback-Mechanismen
+        \item Unterstützt Resilienz und Wiederherstellung in kritischen Systemen
     \end{itemize}
 \end{frame}
 
@@ -405,10 +375,10 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-        \item Erhöhte Komplexität in der Implementierung und Wartung.
-        \item Risiko von Fehlkonfiguration (z. B. falsche Schwellenwerte).
-        \item Zusätzlicher Overhead durch Überwachung und Statusverwaltung.
-        \item Fallback-Daten können veraltet oder ungenau sein.
+        \item Erhöhte Komplexität in der Implementierung und Wartung
+        \item Risiko von Fehlkonfiguration (z. B. falsche Schwellenwerte)
+        \item Zusätzlicher Overhead durch Überwachung und Statusverwaltung
+        \item Fallback-Daten können veraltet oder ungenau sein
     \end{itemize}
 \end{frame}
 
@@ -419,16 +389,31 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
 
 \end{frame}
 
+%\subsection{\textbf{Retry-Muster}}
+%\begin{frame}
+ %   \frametitle{\insertsection}
+  %  \framesubtitle{\insertsubsection}
+
+%   \begin{itemize}
+ %       \item Automatisches Wiederholen fehlgeschlagener Operationen
+  %      \item Nutzung von Exponential Backoff
+   %     \item Verbesserung der Resilienz bei temporären Fehlern
+    %\end{itemize}
+%\end{frame}
+
 \subsection{\textbf{Retry-Muster}}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Automatisches Wiederholen fehlgeschlagener Operationen
-        \item Nutzung von Exponential Backoff
-        \item Verbesserung der Resilienz bei temporären Fehlern
-    \end{itemize}
+    \begin{block}{Definition - Was ist ein Retry-Muster?}
+        Architekturmuster zur automatischen Wiederholung fehlgeschlagener Operationen, insbesondere bei vorübergehenden Fehlern.
+    \end{block}
+    \begin{block}{Funktionen}
+        \begin{itemize}
+            \item Handhabt vorübergehende Fehler durch wiederholte Versuche
+            \item Nutzt dazu exponentielle Backoff-Strategien (= Verlängerung der Wartezeit zwischen Wiederholungen)
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \subsection{Retry-Muster: Sequenzdiagramm}
@@ -481,17 +466,58 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
     \end{itemize}
 \end{frame}
 
-\subsection{\textbf{Load Balancing}}
 
+\subsection{\textbf{Load Balancing}}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
+    \begin{block}{Definition - Was ist Load-Balancing?}
+        Verteilung der Last auf mehrere Server zur Verbesserung von Leistung und Ausfallsicherheit
+    \end{block}
+    \begin{block}{Strategien}
+        \begin{itemize}
+            \item Round Robin
+            \item Least Connection
+            \item Resource Based
+         \end{itemize}
+    \end{block}
+\end{frame}
 
+\subsection{Load-Balancer: Strategien - DNS Round Robin}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Funktionsweise DNS Round Robin}
     \begin{itemize}
-        \item Verteilung der Last auf mehrere Server
-        \item Strategien: Round Robin, Least Connection, Resource Based
-        \item Verbesserung von Leistung und Ausfallsicherheit
+        \item Für einen Hostname werden mehrere IP-Adressen hinterlegt
+        \item DNS-Server gibt Adressen in rotierender Reihenfolge zurück
+        \item Verteilt so Lasten und erhöht Verfügbarkeit
+        % https://www.cloudns.net/images/wiki/Round-Robin-DNS.png
     \end{itemize}
+    \end{block}
+%    \begin{block}{Problem}
+%    \begin{itemize}
+%        \item Kann echte/dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren.
+%    \end{itemize}
+%    \end{block}
+\end{frame}
+
+\subsection{Load-Balancer: Strategien - Least Connection und Recource Based}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Funktionsweise Least Connection}
+        \begin{itemize}
+            \item Anstehende Aufgabe geht an den Dienst mit den momentan wenigsten aktiven Netzwerkverbindungen
+            % https://www.researchgate.net/publication/347808307/figure/fig2/AS:1000876902723590@1615639057440/Least-connection-algorithm.png
+        \end{itemize}
+    \end{block}
+    \begin{block}{Funktionsweise Recource Based}
+        \begin{itemize}
+            \item Serviceknoten berichten aktuelle Auslastung (z.B. CPU-Auslastung)
+            \item Nächste Aufgabe geht an den Knoten mit niedrigster Auslastung
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \subsection{Load Balancer: Architekturdiagramm}
@@ -589,6 +615,47 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
 
 \begin{itemize}
     \item TODO, damit hätten wir etwas, was noch keine Gruppe hat.
-    \item die wichtigsten Definitionen usw hier in kleinerer Schrift
+    \item die wichtigsten Definitionen usw hier in kleinerer Schrift (tiny)
 \end{itemize}
+\end{frame}
+
+\begin{frame}[shrink=10]{Cheatsheet: Wichtige Definitionen und Konzepte}
+    \scriptsize
+    \justifying
+
+    \begin{columns}[t]
+        \column{0.3\textwidth}
+        \textbf{1. Grundbegriffe}\\
+        \textbf{Resilienz} = Übergeordnetes Konzept, Fehlertoleranz + Aspekte wie
+        Wiederherstellung, Anpassungsfähigkeit und präventive Maßnahmen\\
+        \textbf{Fehlertoleranz} = Fokus auf unmittelbarer Bewältigung von Fehlern während des
+        Systembetriebs\\
+        \textbf{Ziel}: Störungen im laufenden Betrieb vermeiden
+
+        \column{0.3\textwidth}
+        \textbf{2. Resilienzstrategien}\\
+            \textbf{Redundanz}: Vervielfältigung kritischer Komponenten oder Funktionen zur Erhöhung der
+            Zuverlässigkeit und Verfügbarkeit.\\
+        -> aktive vs. passive Redundanz; Redundanzebenen!\\
+            \textbf{Partionierung}: Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten
+            für Skalierbarkeit, Leistung und Flexibilität.\\
+            \textbf{Skalierung}: Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
+        -> vertikal vs. horizontal vs. automatisch!
+
+
+        \column{0.3\textwidth}
+        \textbf{3. Fehlertoleranzstrategien + Pattern}
+            \textbf{Retry-Muster}: Wiederholt fehlgeschlagene Operationen, oft mit Backoff-Strategien.\\
+            \textbf{Circuit-Breaker}: Isoliert fehlerhafte Dienste, unterbricht Anfragen bei wiederholtem Fehler,
+            verhindert kaskadierende Ausfälle.\\
+        -> clientseitig vs. dienstseitig vs. proxy-basiert!\\
+            \textbf{Load-Balancing}: Verteilung der Last auf mehrere Server zur Verbesserung von Leistung und
+            Ausfallsicherheit.\\
+            \textbf{Load-Balancing-Strategien}:
+            \begin{itemize}
+                \item DNS Round Robin: rotierende Rückgabe von IP-Adressen
+                \item Least Connection: Aufgabe an Dienst mit den wenigsten aktiven Netzwerkverbindungen
+            %    \item Recource Based: Aufgabe an Knoten mit geringster Auslastung
+            \end{itemize}
+    \end{columns}
 \end{frame}
