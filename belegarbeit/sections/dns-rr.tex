@@ -6,13 +6,13 @@ Dennoch ist auch ein System mit Lastverteilung nicht ausfallsicher:
 Der Lastverteiler selbst oder der gesamte Servercluster könnte ausfallen, woraufhin die Dienstleistung nicht mehr erreichbar wäre.
 Eine Strategie, um diesem Fall entgegenzusteuern, ist DNS Round Robin.
 
-Das Domain Name System, kurz DNS, wird genutzt um eine Assoziation zwischen einem Hostname und einer IP-Adresse zu hinterlegen.
+Das Domain Name System, kurz DNS, wird genutzt um eine Assoziation zwischen einer Domain und einer IP-Adresse zu hinterlegen.
 Beispielsweise könnte ein Record hinterlegt werden, dass die Domain \verb|server.de| auf die Serveradresse des ersten Lastverteilers zeigt.
-Wenn ein Client nun anstelle einer IP-Adresse den zugehörigen Hostname benutzt, wird zuerst der lokale DNS (Cache) befragt, ob der Name zu einer IP aufgelöst werden kann.
+Wenn ein Client nun anstelle einer IP-Adresse die zugehörige Domain benutzt, wird zuerst der lokale DNS (Cache) befragt, ob der Name zu einer IP aufgelöst werden kann.
 Ansonsten wird der externe autoritative Namensserver nach der IP befragt, und diese dann lokal zwischengespeichert und genutzt~\cite{Kopparapu.2002}.
 
 Falls die IP des Lastverteilers nicht erreichbar ist, würde die Anfrage also fehlschlagen.
-Es ist jedoch möglich, für einen Hostname mehrere IP-Adressen zu hinterlegen.
+Es ist jedoch möglich, für eine Domain mehrere IP-Adressen zu hinterlegen.
 Diese würden dann zu verschiedenen Servercomputern, ggf. mit jeweils eigenen internen Lastverteilern führen.
 
 Wenn ein Client nun zur Namensauflösung den autoritativen DNS befragt, gibt dieser immer alle Records zurück.
