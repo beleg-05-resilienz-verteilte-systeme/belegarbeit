@@ -474,13 +474,195 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \begin{block}{Definition - Was ist Load-Balancing?}
         Verteilung der Last auf mehrere Server zur Verbesserung von Leistung und Ausfallsicherheit
     \end{block}
-    \begin{block}{Strategien}
+    \begin{block}{Arten}
         \begin{itemize}
-            \item Round Robin
-            \item Least Connection
-            \item Resource Based
+       		\item Network Load Balancer
+       		\item Application Load Balancer
+        	\item Hardware Load Balancer
+%            \item Round Robin
+%            \item Least Connection
+%            \item Resource Based
          \end{itemize}
     \end{block}
+\end{frame}
+
+\subsection{Load Balancing: Service Discovery}
+\begin{frame}
+	\frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Service Discovery}
+	\begin{itemize}
+		\item \textbf{Server-side Discovery}
+		\begin{itemize}
+			\item Ein zentraler Load Balancer
+			\item Dienste sind unsichtbar für Client
+		\end{itemize}
+			\item \textbf{Client-side Discovery}
+		\begin{itemize}
+			\item Kein zentraler Load Balancer
+			\item Client sieht alle Dienstinstanzen
+			\item Client betreibt Load Balancing
+		\end{itemize}
+	\end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Load Balancing: Architekturdiagramm}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{columns}[c]
+        \begin{column}{0.4\textwidth}
+	        \begin{block}{Komponenten}
+	            \begin{itemize}
+	                \item Load Balancer
+	                \item Service Registry
+	                \item Dienstinstanzen
+	            \end{itemize}
+	        \end{block}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+        	\begin{figure}[h]
+	            \centering
+	            \captionsetup{aboveskip=0pt}
+	            \includegraphics[width=.95\linewidth]{../images/loadbalancer}  
+	            \caption{Load Balancer mit Server Side Discovery}      		
+        	\end{figure}
+        \end{column}
+    \end{columns}
+
+%	\begin{columns}[T]
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}[h]
+%			    \centering
+%			    \includegraphics[height=0.5\textheight]{../images/loadbalancer}
+%			    \caption{Architekturdiagramm mit einem zentalen Load Balancer}
+%			\end{figure}
+%		\end{column}
+%		\begin{column}[0.5\textwidth}
+%			\begin{itemize}
+%				\item bruh
+%			\end{itemize}
+%		\end{column}
+%	\end{columns}
+
+    
+\end{frame}
+
+\subsection{Load Balancing: statische Strategien}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Source IP Hash Load Balancing}
+        \begin{itemize}
+            \item Clients werden praktisch zufällig verteilt
+            \item Anfragen eines Clients werden immer auf der selben Serviceinstanz verarbeitet (\textit{Sticky Sessions})
+        \end{itemize}
+    \end{block}
+    \begin{block}{Round Robin}
+        \begin{itemize}
+            \item Anfragen werden zyklisch auf Instanzen verteilt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%\subsection{Load-Balancer: Strategien - Least Connection und Recource Based}
+\subsection{Load Balancing: dynamische Strategien}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Least Connection}
+        \begin{itemize}
+            \item Anstehende Aufgabe geht an den Dienst mit den momentan wenigsten aktiven Netzwerkverbindungen
+            % https://www.researchgate.net/publication/347808307/figure/fig2/AS:1000876902723590@1615639057440/Least-connection-algorithm.png
+        \end{itemize}
+    \end{block}
+    \begin{block}{Resource Based}
+        \begin{itemize}
+            \item Serviceknoten berichten aktuelle Auslastung (z.B. CPU-Auslastung)
+            \item Nächste Aufgabe geht an den Knoten mit niedrigster Auslastung
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.55\textheight]{../images/leastconnection}
+        \caption{Least Connection-basiertes Load Balancing}
+    \end{figure}
+\end{frame}
+
+\subsection{Health Checks bei Load Balancing}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+    	\begin{block}{Konzept}
+    		Dienstinstanzen kommunizieren ihren Grad der Funktionsbereitschaft, um dynamische Lastverteilung zu ermöglichen.
+    	\end{block}
+
+        \item Dienste haben Endpunkte, um Auslastung oder Fehler abzurufen
+        \item Überlastete Dienste erhalten weniger Anfragen
+        \item Fehlerhafte Dienste können übergangen werden
+    \end{itemize}
+\end{frame}
+
+\subsection{Load Balancing: dynamische Skalierung}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \begin{block}{Problem}
+	    \begin{itemize}
+	    	\item Die Anzahl der Anfragen ist nicht immer gleich
+	   		\begin{itemize}
+	   			\item Zur Spitzenbelastung sind mehr Dienstknoten nötig
+	   			\item In Ruhezeiten verschwenden unterbelastete Knoten Strom und Geld
+	   		\end{itemize}
+	    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Die Lösung: dynamische Skalierung}
+		\begin{itemize}
+			\item Der Load Balancer wird befähigt, Dienstinstanzen zu starten und stoppen
+			\item Schwellwerte definieren, wann dies erfolgen soll
+		\end{itemize}	
+    \end{block}
+
+\end{frame}
+
+\subsection{Load Balancing: Vorteile}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \begin{itemize}
+    	\item Gesteigerter Durchsatz durch parallel laufende Dienste
+    	\item Hohe Verfügbarkeit durch Redundanz und nahtlosem Failover
+    	\item Kostenreduktion durch dynamische horizontale Skalierung
+    \end{itemize}
+\end{frame}
+
+\subsection{Load Balancing: Nachteile}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \begin{itemize}
+    	\item Deutlich gesteigerte Komplexität der Infrastruktur
+    	\item Zusätzliche Kosten für Load Balancer (Hardware und Lizenz)% hier dann latenz bei zu schwachem LB erwähnen (LB auch nur vertikal skalierbar)
+    	\item Dienste sind nicht immer kompatibel
+		\begin{itemize}
+			\item Healthchecks müssen implementiert werden
+			\item Stateful-Dienste sind nur eingeschränkt verwendbar
+		\end{itemize}
+    	\item Anstelle eines einzelnen Dienstes ist jetzt der Load Balancer ein Single~Point~of~Failure
+    \end{itemize}
 \end{frame}
 
 \subsection{Load-Balancer: Strategien - DNS Round Robin}
@@ -500,48 +682,6 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 %        \item Kann echte/dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren.
 %    \end{itemize}
 %    \end{block}
-\end{frame}
-
-\subsection{Load-Balancer: Strategien - Least Connection und Recource Based}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-    \begin{block}{Funktionsweise Least Connection}
-        \begin{itemize}
-            \item Anstehende Aufgabe geht an den Dienst mit den momentan wenigsten aktiven Netzwerkverbindungen
-            % https://www.researchgate.net/publication/347808307/figure/fig2/AS:1000876902723590@1615639057440/Least-connection-algorithm.png
-        \end{itemize}
-    \end{block}
-    \begin{block}{Funktionsweise Recource Based}
-        \begin{itemize}
-            \item Serviceknoten berichten aktuelle Auslastung (z.B. CPU-Auslastung)
-            \item Nächste Aufgabe geht an den Knoten mit niedrigster Auslastung
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\subsection{Load Balancer: Architekturdiagramm}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{figure}[h]
-        \centering
-        \includegraphics[height=0.5\textheight]{../images/loadbalancer}
-        \caption{Architekturdiagramm mit einem zentalen Load Balancer}
-    \end{figure}
-\end{frame}
-
-\subsection{Health Checks bei Load Balancing}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Überwachung der Zustände von Diensten
-        \item Vermeidung von Überlastungen
-        \item Umgang mit fehlerhaften Knoten
-    \end{itemize}
 \end{frame}
 
 \section{Fazit}
