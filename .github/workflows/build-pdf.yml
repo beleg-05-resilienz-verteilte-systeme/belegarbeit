@@ -1,4 +1,4 @@
-name: Build and Commit Belegarbeit
+name: Build and Commit PDFs
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-commit:
+  build-belegarbeit:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,44 @@ jobs:
           root_file: main.tex
           latexmk_shell_escape: true
           extra_system_packages: "inkscape"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: belegarbeit
+          path: belegarbeit/main.pdf
+
+  build-presentation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: presentation.tex
+          working_directory: presentation
+          latexmk_shell_escape: true
+          extra_system_packages: "inkscape"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: presentation
+          path: presentation/presentation.pdf
+
+  commit-documents:
+    needs: [build-belegarbeit, build-presentation]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download belegarbeit artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: belegarbeit
+      - name: Download presentation artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: presentation
 
       - name: Clone target repository
         run: |
@@ -30,13 +68,14 @@ jobs:
 
       - name: Copy built PDF to target repository
         run: |
-          cp belegarbeit/main.pdf target_repo/05-resilienz-verteilte-systeme.pdf
+          cp main.pdf target_repo/05-resilienz-verteilte-systeme.pdf
+          cp presentation.pdf target_repo/05-folien-resilienz-verteilte-systeme.pdf
 
       - name: Commit and push to target repository
         run: |
           cd target_repo
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add 05-resilienz-verteilte-systeme.pdf
-          git commit -m "Update Belegarbeit (PDF)"
+          git add .
+          git commit -m "Update PDFs"
           git push origin main
