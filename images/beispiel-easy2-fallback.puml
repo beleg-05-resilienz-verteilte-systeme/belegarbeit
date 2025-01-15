@@ -5,7 +5,7 @@ skinparam componentStyle rectangle
 'skinparam linetype ortho
 
 ' Abstand zwischen den Paketen erhöhen
-skinparam ranksep 70
+skinparam ranksep 40
 
 package "Clients" {
   [Client 1]
