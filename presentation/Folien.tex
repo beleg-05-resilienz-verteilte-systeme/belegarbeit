@@ -17,6 +17,17 @@
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
+    \vspace*{-14pt}
+    \begin{figure}[h]
+        \centering
+		\resizebox{!}{.7\textheight}{%
+			\input{../images/beispiel-easy1.tex}
+		}
+		\captionsetup{aboveskip=2pt}
+        \caption{Beispiel ohne Resilienzstrategien}
+    \end{figure}
+%    \input{../images/beispiel-easy1.tex}
+    
     % SVG beispiel-easy2.svg
 
 \end{frame}
@@ -387,6 +398,15 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
+    \vspace*{-14pt}
+    \begin{figure}[h]
+        \centering
+		\resizebox{!}{.7\textheight}{%
+			\input{../images/beispiel-easy2-fallback.tex}
+		}
+		\captionsetup{aboveskip=2pt}
+        \caption{Beispiel mit Circuit Breaker}
+    \end{figure}
 \end{frame}
 
 %\subsection{\textbf{Retry-Muster}}
@@ -423,8 +443,9 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.5\textheight]{../images/retry-pattern}
-        \caption{Sequenzdiagramm des Retry Patterns}
+        \vspace*{-10pt} %amazing
+        \includegraphics[height=0.58\textheight]{../images/retry-pattern}
+        \caption{Sequenzdiagramm des Retry Patterns~\cite{Microsoft.}}
     \end{figure}
 \end{frame}
 
@@ -508,8 +529,10 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
+	\vspace*{-1cm}
+
     \begin{columns}[c]
-        \begin{column}{0.4\textwidth}
+        \begin{column}{0.35\textwidth}
 	        \begin{block}{Komponenten}
 	            \begin{itemize}
 	                \item Load Balancer
@@ -518,12 +541,12 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 	            \end{itemize}
 	        \end{block}
         \end{column}
-        \begin{column}{0.6\textwidth}
+        \begin{column}{0.65\textwidth}
         	\begin{figure}[h]
 	            \centering
 	            \captionsetup{aboveskip=2pt}
-	            \includegraphics[width=.95\linewidth]{../images/loadbalancer}  
-	            \caption{Load Balancer mit Server Side Discovery}      		
+	            \includegraphics[width=\linewidth]{../images/loadbalancer}  
+	            \caption{Load Balancer mit Server Side Discovery~\cite{schoner2017analyse}}
         	\end{figure}
         \end{column}
     \end{columns}
@@ -567,11 +590,12 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-
+	
+	\vspace{-12pt} %hey vspace michael here
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.55\textheight]{../images/leastconnection}
-        \caption{Least Connection-basiertes Load Balancing}
+        \includegraphics[height=0.6\textheight]{../images/leastconnection}
+        \caption{Least Connection-basiertes Load Balancing~\cite{efficient-load-balancing}}
     \end{figure}
 \end{frame}
 
@@ -671,11 +695,12 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
+	\vspace*{-12pt}
     \begin{figure}[h]
         \centering
         \captionsetup{aboveskip=0pt}
         \includegraphics[width=.7\textwidth]{../images/roundrobindns}
-        \caption{Round Robin DNS}
+        \caption{Round Robin DNS~\cite{cloudns-roundrobin}}
     \end{figure}
 \end{frame}
 
