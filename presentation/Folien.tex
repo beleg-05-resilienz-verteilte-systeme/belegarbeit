@@ -12,7 +12,17 @@
 
 \section{Resilienz und Fehlertoleranz}
 
-\subsection{Initiales Beispiel 1.}
+\begin{frame}
+    \frametitle{\insertsection}
+    \begin{itemize}
+        \item<1-> Deutsche Bahn
+        \item<2-> \textbf{Es gibt kein fehlerfreies System.} \enquote{Ein Ausfall [...] gilt als unvermeidlich}~\cite{Haley.28.06.2018,Montesi.19.09.2016}.
+        \item<3-> Also: Genügend Umsteigezeit einplanen (Vorkehrungen) und ansonsten alternative Verbindung heraussuchen
+        \item<4-> \textbf{Resilienz aufbauen}
+    \end{itemize}
+\end{frame}
+
+\subsection{Initiales Beispiel: Architekturdiagramm für Videostreaming-Platform}
 
 \begin{frame}
     \frametitle{\insertsection}
@@ -23,11 +33,9 @@
 		\resizebox{!}{.7\textheight}{%
 			\input{../images/beispiel-easy1.tex}
 		}
-		\captionsetup{aboveskip=2pt}
-        \caption{Beispiel ohne Resilienzstrategien}
     \end{figure}
 %    \input{../images/beispiel-easy1.tex}
-    
+
     % SVG beispiel-easy2.svg
 
 \end{frame}
@@ -99,30 +107,6 @@
         \end{itemize}
     \end{block}
 \end{frame}
-
-%\begin{frame}
-%    \frametitle{\insertsection}
-%    \framesubtitle{\insertsubsection}
-%
-%    \begin{itemize}
-%        \item Verbreitung von Microservices und Cloud-Technologien
-%        \item Herausforderungen durch Kommunikationsausfälle und Spitzenlasten
-%        \item Bedarf an innovativen Resilienzmustern
-%    \end{itemize}
-%\end{frame}
-
-\subsection{Initiales Beispiel 2.}
-
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item wie können wir Resilienz und Fehlertoleranz am Beispiel weiterführen?
-        \item Zunächst natürlich grob, weil die Strategien und Pattern ja noch kommen.
-    \end{itemize}
-\end{frame}
-
 
 \section{Strategien}
 \subsection{\textbf{Resilienzstrategien}}
@@ -338,9 +322,9 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
             \path[]	(open)   edge[loop, in=60,out=120, looseness=3,->] node[above]  {\textit{fail fast}} (open);
             \path[]	(closed)   edge[loop, in=60,out=120, looseness=3,<-] node[above]  {\textit{success}} (closed);
             \path[]	(closed)   edge[loop, in=240,out=300, looseness=3,<-] node[below]  {\textit{fail}} (closed);
+            \draw [->] (-2,0) -- (closed.west) node[midway,above] {\textit{Start}};
         \end{tikzpicture}
-        \caption{Circuit Breaker Zustandsdiagramm} % TODO Quelle
-        \label{cb-fsm}
+        \caption{Circuit Breaker Zustandsdiagramm nach~\cite{Montesi.19.09.2016}.}
     \end{figure}
 \end{frame}
 
@@ -387,13 +371,13 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 
     \begin{itemize}
         \item Erhöhte Komplexität in der Implementierung und Wartung
-        \item Risiko von Fehlkonfiguration (z. B. falsche Schwellenwerte)
+        \item Risiko von Fehlkonfiguration (z.B.\ falsche Schwellenwerte)
         \item Zusätzlicher Overhead durch Überwachung und Statusverwaltung
         \item Fallback-Daten können veraltet oder ungenau sein
     \end{itemize}
 \end{frame}
 
-\subsection{Circuit-Breaker: großes Diagramm mit Anpassungen}
+\subsection{Circuit-Breaker: Architekturdiagramm für Videostreaming-Platform}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
@@ -401,11 +385,22 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \vspace*{-14pt}
     \begin{figure}[h]
         \centering
-		\resizebox{!}{.7\textheight}{%
+		\resizebox{!}{.72\textheight}{%
 			\input{../images/beispiel-easy2-fallback.tex}
 		}
 		\captionsetup{aboveskip=2pt}
-        \caption{Beispiel mit Circuit Breaker}
+    \end{figure}
+\end{frame}
+
+\subsection{Circuit-Breaker: Hystrix Dashboard von Netflix\cite{Schmaus.11.12.2012}}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \vspace*{-14pt}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.68\textheight]{../images/Hystrix-Dashboard}
     \end{figure}
 \end{frame}
 
@@ -444,8 +439,12 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \begin{figure}[h]
         \centering
         \vspace*{-10pt} %amazing
-        \includegraphics[height=0.58\textheight]{../images/retry-pattern}
-        \caption{Sequenzdiagramm des Retry Patterns~\cite{Microsoft.}}
+        \includegraphics[height=0.40\textheight]{../images/retry-pattern2}
+        \caption{Sequenzdiagramm des Retry Patterns~\cite{Microsoft.}\\
+        1. Versuch: Fehlgeschlagener Anfrage (HTTP Reponse Code 500)\\
+        2. Versuch: Nach kurzer Wartezeit: Erneute fehlgeschlagene Anfrage (500)\\
+        3. Versuch: Nach längerer Wartezeit: Erfolg (200)\\
+        }
     \end{figure}
 \end{frame}
 
@@ -474,17 +473,26 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \end{itemize}
 \end{frame}
 
-\subsection{\textbf{Kombination mit Circuit-Breaker}}
+\subsection{\textbf{Fallback-Muster: Code-Beispiel}}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
-    \begin{itemize}
-        \item Stoppt Wiederholungen bei permanenten Fehlern
-        \item Ermöglicht Systemen, sich zu erholen
-        \item Optimiert Ressourcennutzung
-    \end{itemize}
+
+    \begin{lstlisting}[language=Python]
+FALLBACK_DATA = [
+    {"title": "Lorem Ipsum: The Beginning", "year": 2020},
+    ...
+]
+def get_recommendation_data():
+    try:
+        response = requests.get(RECOMMENDATION_SERVICE_URL)
+        ...
+        return JSONResponse(response.json())
+    except (requests.RequestException, requests.exceptions.HTTPError) as e:
+        return JSONResponse(FALLBACK_DATA)
+    \end{lstlisting}
 \end{frame}
 
 
@@ -545,7 +553,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
         	\begin{figure}[h]
 	            \centering
 	            \captionsetup{aboveskip=2pt}
-	            \includegraphics[width=\linewidth]{../images/loadbalancer}  
+	            \includegraphics[width=\linewidth]{../images/loadbalancer}
 	            \caption{Load Balancer mit Server Side Discovery~\cite{schoner2017analyse}}
         	\end{figure}
         \end{column}
@@ -590,7 +598,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-	
+
 	\vspace{-12pt} %hey vspace michael here
     \begin{figure}[h]
         \centering
@@ -619,7 +627,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
+
     \begin{block}{Problem}
 	    \begin{itemize}
 	    	\item Die Anzahl der Anfragen ist nicht immer gleich
@@ -629,12 +637,12 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 	   		\end{itemize}
 	    \end{itemize}
     \end{block}
-    
+
     \begin{block}{Die Lösung: dynamische Skalierung}
 		\begin{itemize}
 			\item Der Load Balancer wird befähigt, Dienstinstanzen zu starten und stoppen
 			\item Schwellwerte definieren, wann dies erfolgen soll
-		\end{itemize}	
+		\end{itemize}
     \end{block}
 
 \end{frame}
@@ -643,7 +651,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
+
     \begin{itemize}
     	\item Gesteigerter Durchsatz durch parallel laufende Dienste
     	\item Hohe Verfügbarkeit durch Redundanz und nahtlosem Failover
@@ -655,7 +663,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
+
     \begin{itemize}
     	\item Deutlich gesteigerte Komplexität der Infrastruktur
     	\item Zusätzliche Kosten für Load Balancer (Hardware und Lizenz)% hier dann latenz bei zu schwachem LB erwähnen (LB auch nur vertikal skalierbar)
@@ -708,7 +716,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
+
     \begin{itemize}
     	\item Einfach zu implementieren
     	\item Sticky Sessions by default
@@ -720,7 +728,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
+
     \begin{block}{Balancing}
 	    \begin{itemize}
 	    	\item Nur statische Lastverteilung ist möglich
@@ -731,7 +739,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 	    	\end{itemize}
 	    \end{itemize}
     \end{block}
-    
+
     \begin{block}{Failover-Verhalten}
 	    \begin{itemize}
 	    	\item Vom Client kontrolliert, nicht vom Server oder DNS
@@ -798,18 +806,6 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 \section{Quellen}
 \begin{frame}[allowframebreaks]{\insertsection} % Allow frame breaks if many references
 \bibliography{../literatur}
-\end{frame}
-
-\section{Cheatsheet zum Lernen}
-
-\begin{frame}
-\frametitle{\insertsection}
-\framesubtitle{\insertsubsection}
-
-\begin{itemize}
-    \item TODO, damit hätten wir etwas, was noch keine Gruppe hat.
-    \item die wichtigsten Definitionen usw hier in kleinerer Schrift (tiny)
-\end{itemize}
 \end{frame}
 
 \begin{frame}[shrink=10]{Cheatsheet: Wichtige Definitionen und Konzepte}
