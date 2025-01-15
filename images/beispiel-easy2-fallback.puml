@@ -1,0 +1,46 @@
+@startuml
+title Architekturdiagramm für Videostreaming-Platform
+
+skinparam componentStyle rectangle
+'skinparam linetype ortho
+
+' Abstand zwischen den Paketen erhöhen
+skinparam ranksep 70
+
+package "Clients" {
+  [Client 1]
+  [Client 2]
+  [Client 3]
+  [...]
+}
+
+package "PlaybackService API (public)" as PBS {
+  component "PlaybackService" as PS
+}
+
+note right
+Unterbricht Anfragen
+und fällt zurück auf eine
+generische/statische
+Vorschlagsliste
+end note
+
+package "ContentRecommendationService API (private)" as CRS {
+  component "ContentRecommendationService" as CS
+}
+
+[Client 1] --> PS
+[Client 2] --> PS : Handle Request
+[Client 3] --> PS
+
+'PS -[#000000]-down-> CS : Handle Request
+
+' Darstellung der Störung
+PS ..[#FF0000,dashed,thickness=2]-> CS : Netzwerkfehler
+
+'[Client 1] -down-> PS
+'[Client 2] -down-> PS : Handle Request
+'[Client 3] -down-> PS
+'PS -down-> CS : Handle Request
+
+@enduml
