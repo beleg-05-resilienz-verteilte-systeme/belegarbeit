@@ -1,0 +1,51 @@
+@startuml
+title Architekturdiagramm für Videostreaming-Platform
+
+skinparam componentStyle rectangle
+'skinparam linetype ortho
+
+skinparam ranksep 20
+
+package "Clients" {
+  [Client 1]
+  [Client 2]
+  [Client 3]
+  [...]
+}
+
+package "PlaybackService API (public)" as PBS {
+  component "PlaybackService" as PS
+}
+
+note right
+Stellt Anfrage an Load Balancer.
+
+Muss nicht wissen, wie viele Dienste
+es gibt oder funktionieren
+end note
+
+together {
+  package "ContentRecommendationService API (private)" as CRS {
+    component "ContentRecommendationService" as CS
+  }
+
+  package "ContentRecommendationService API (private)" as CRS2 {
+    component "ContentRecommendationService" as CS2
+  }
+}
+
+package "LoadBalancer" as LB {
+  component "LoadBalancer + ServiceRegistry" as LBSR
+}
+
+[Client 1] --> PS
+[Client 2] --> PS : Handle Request
+[Client 3] --> PS
+
+PS -down-> LBSR
+' Darstellung der Störung
+LBSR ..[#FF0000,dashed,thickness=2]-> CS : Netzwerkfehler
+
+LBSR -down-> CS2 : Handle Request
+
+@enduml

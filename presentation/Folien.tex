@@ -644,7 +644,22 @@ def get_recommendation_data():
 			\item Schwellwerte definieren, wann dies erfolgen soll
 		\end{itemize}
     \end{block}
+\end{frame}
 
+\subsection{Load Balancing am Beispiel}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \vspace*{-22pt}
+    \begin{figure}[h]
+        \centering
+		\resizebox{!}{.75\textheight}{%
+			\input{../images/beispiel-easy-loadbalancing.tex}
+		}
+		\captionsetup{aboveskip=2pt}
+        \caption{Beispiel mit Load Balancer}
+    \end{figure}
 \end{frame}
 
 \subsection{Load Balancing: Vorteile}
@@ -676,6 +691,31 @@ def get_recommendation_data():
     \end{itemize}
 \end{frame}
 
+\subsection{Load Balancing in AWS}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+	
+	\vspace{-12pt} %hey vspace michael here
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.65\textheight]{../images/aws-elb-creation}
+        \caption{Erstellung eines AWS Elastic Load Balancers~\cite{bitnamiConfigureElastic}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+	
+	\vspace{-12pt} %hey vspace michael here
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.65\textheight]{../images/aws-elb-routing}
+        \caption{Konfiguration des Balancer$\rightarrow$Service Routing~\cite{bitnamiConfigureElastic}}
+    \end{figure}
+\end{frame}
+
 \subsection{Round Robin DNS}
 \begin{frame}
     \frametitle{\insertsection}
@@ -698,7 +738,6 @@ def get_recommendation_data():
     \end{block}
 \end{frame}
 
-
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
@@ -709,6 +748,19 @@ def get_recommendation_data():
         \captionsetup{aboveskip=0pt}
         \includegraphics[width=.7\textwidth]{../images/roundrobindns}
         \caption{Round Robin DNS~\cite{cloudns-roundrobin}}
+    \end{figure}
+\end{frame}
+
+\subsection{Round Robin: Erstellung mehrerer DNS-Einträge}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+	
+	\vspace{-12pt} %hey vspace michael here
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{../images/cloudflare-multiple-dns}
+        \caption{Mehrere DNS-Einträge bei Cloudflare}
     \end{figure}
 \end{frame}
 
@@ -752,6 +804,52 @@ def get_recommendation_data():
 \end{frame}
 
 \section{Fazit}
+
+\subsection{Den Überblick behalten}
+\begin{frame}
+	\frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \begin{block}{Problem}
+    In großen verteilte Systeme ist die Anzahl der Probleme, Stellschrauben und Handlungen kaum überschaubar.
+    	\begin{itemize}
+    		\item Hohe Resilienz erfordert automatische und schnelle Aktionen
+    		\item Die hohe Frequenz von Problemen und Reaktionen ist schwer verfolgbar
+    		\begin{itemize}
+    			\item Wie kann man den Überblick behalten?
+    		\end{itemize}
+    	\end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    
+    \vspace*{-0.5cm}
+    
+    \begin{block}{Zentralisiertes Logging}
+    	\begin{itemize}
+    		\item Elastic Stack
+    	\end{itemize}
+    \end{block}
+
+	\begin{block}{Sammlung von Metriken}
+    	\begin{itemize}
+    		\item Prometheus
+    		\item Grafana Cloud
+    	\end{itemize}
+    \end{block}
+    
+    \begin{block}{Request Tracing}
+    	\begin{itemize}
+    		\item Jaeger
+    	\end{itemize}
+    \end{block}
+
+\end{frame}
+
+
 \subsection{Was wurde gemacht?}
 
 \begin{frame}
