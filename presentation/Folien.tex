@@ -148,7 +148,7 @@
                 \end{itemize}
             \item Passive Redundanz
                 \begin{itemize}
-                    \item Redundante Komponenten im Standby.
+                    \item Redundante Komponenten im Standby
                     \item Aktivierung bei Ausfall der primären Komponente (mit Umschaltzeit)
                 \end{itemize}
         \end{itemize}
@@ -237,7 +237,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 
    %\begin{block}{Arten der Skalierung}
         \begin{itemize}
-            \item Vertikale Skalierung (Scale Up)
+            \item Vertikale Skalierung (Scale Up):
             \begin{itemize}
                 \item Aufrüstung von Hardware (z.\,B.\ CPU, RAM) eines Systems
                 \item Begrenzung auf eine zentrale Einheit
@@ -324,7 +324,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
             \path[]	(closed)   edge[loop, in=240,out=300, looseness=3,<-] node[below]  {\textit{fail}} (closed);
             \draw [->] (-2,0) -- (closed.west) node[midway,above] {\textit{Start}};
         \end{tikzpicture}
-        \caption{Circuit Breaker Zustandsdiagramm nach~\cite{Montesi.19.09.2016}.}
+        \caption{Circuit Breaker Zustandsdiagramm~\cite{Montesi.19.09.2016}.}
     \end{figure}
 \end{frame}
 
@@ -454,9 +454,10 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-    \item Reduziert die Wahrscheinlichkeit eines vollständigen Anwendungsabsturzes bei vorübergehenden Fehlern.
-    \item Verbessert die Zuverlässigkeit, indem kurzfristige Probleme (z.\,B.\ Netzwerkprobleme) automatisch überwunden werden.
-    \item Ermöglicht ein einheitliches Fehlerbehandlungsmodell in einer Anwendung.
+    \item Reduziert die Wahrscheinlichkeit eines vollständigen Anwendungsabsturzes bei vorübergehenden Fehlern
+    \item Verbessert die Zuverlässigkeit, indem kurzfristige Probleme (z.\,B.\ Netzwerkprobleme) automatisch überwunden
+    werden
+    \item Ermöglicht ein einheitliches Fehlerbehandlungsmodell in einer Anwendung
 \end{itemize}
 \end{frame}
 
@@ -466,10 +467,10 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
     \framesubtitle{\insertsubsection}
 
     \begin{itemize}
-        \item Erhöhte Komplexität in der Implementierung und Wartung.
-        \item Verzögert die Gesamtverarbeitung, wenn ein Vorgang wiederholt fehlschlägt.
-        \item Kann echte, dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren.
-        \item Nicht jeder Fehler ist vorübergehend (z.\,B.\ Authentifizierungsfehler), was zu unnötigen Wiederholungen führt.
+        \item Erhöhte Komplexität in der Implementierung und Wartung
+        \item Verzögert die Gesamtverarbeitung, wenn ein Vorgang wiederholt fehlschlägt
+        \item Kann echte, dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren
+        \item Nicht jeder Fehler ist vorübergehend (z.\,B.\ Authentifizierungsfehler), was zu unnötigen Wiederholungen führt
     \end{itemize}
 \end{frame}
 
@@ -501,7 +502,7 @@ def get_recommendation_data():
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
     \begin{block}{Definition - Was ist Load-Balancing?}
-        Verteilung der Last auf mehrere Server zur Verbesserung von Leistung und Ausfallsicherheit
+        Verteilung der Last auf mehrere Server zur Verbesserung von Leistung und Ausfallsicherheit.
     \end{block}
     \begin{block}{Arten}
         \begin{itemize}
@@ -669,7 +670,7 @@ def get_recommendation_data():
 
     \begin{itemize}
     	\item Gesteigerter Durchsatz durch parallel laufende Dienste
-    	\item Hohe Verfügbarkeit durch Redundanz und nahtlosem Failover
+    	\item Hohe Verfügbarkeit durch Redundanz und nahtloses Failover
     	\item Kostenreduktion durch dynamische horizontale Skalierung
     \end{itemize}
 \end{frame}
@@ -687,7 +688,7 @@ def get_recommendation_data():
 			\item Healthchecks müssen implementiert werden
 			\item Stateful-Dienste sind nur eingeschränkt verwendbar
 		\end{itemize}
-    	\item Anstelle eines einzelnen Dienstes ist jetzt der Load Balancer ein Single~Point~of~Failure
+    	\item Load Balancer als neuer Single~Point~of~Failure
     \end{itemize}
 \end{frame}
 
@@ -811,7 +812,7 @@ def get_recommendation_data():
     \framesubtitle{\insertsubsection}
 
     \begin{block}{Problem}
-    In großen verteilte Systeme ist die Anzahl der Probleme, Stellschrauben und Handlungen kaum überschaubar.
+    In großen verteilten Systemen ist die Anzahl der Probleme, Stellschrauben und Handlungen kaum überschaubar.
     	\begin{itemize}
     		\item Hohe Resilienz erfordert automatische und schnelle Aktionen
     		\item Die hohe Frequenz von Problemen und Reaktionen ist schwer verfolgbar
@@ -890,7 +891,6 @@ def get_recommendation_data():
 %    \end{itemize}
 %\end{frame}
 
-\section{Fazit}
 \begin{frame}
     \frametitle{\ }
     \centering
