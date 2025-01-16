@@ -154,7 +154,7 @@
         \end{itemize}
    % \end{block}
 
- %Bild z.B. https://upload.wikimedia.org/wikipedia/commons/8/84/Apollo_15_descends_to_splashdown.jpg
+ %Bild z.\,B.\ https://upload.wikimedia.org/wikipedia/commons/8/84/Apollo_15_descends_to_splashdown.jpg
 
 \end{frame}
 
@@ -166,23 +166,23 @@
 
     %\begin{block}{Ebenen der Redundanz}
         \begin{itemize}
-            \item Software-Redundanz
+            \item \textbf{Software-Redundanz}
             \begin{itemize}
                 \item Mehrere Softwarekomponenten erfüllen dieselbe Funktion
             \end{itemize}
             \item Hardware-Redundanz
             \begin{itemize}
-                \item Doppelte physische Komponenten (z. B. Netzteile, RAID-Systeme)
+                \item Doppelte physische Komponenten (z.\,B.\ Netzteile, RAID-Systeme)
             \end{itemize}
             \item Daten-Redundanz
             \begin{itemize}
-                \item Mehrfach gespeicherte Daten (z. B. Replikation, Backups)
+                \item Mehrfach gespeicherte Daten (z.\,B.\ Replikation, Backups)
             \end{itemize}
-            \item Netzwerk-Redundanz
+            \item \textbf{Netzwerk-Redundanz}
             \begin{itemize}
-                \item Alternative Übertragungswege (z. B. redundante Router, Glasfaserverbindungen)
+                \item Alternative Übertragungswege (z.\,B.\ redundante Router, Glasfaserverbindungen)
             \end{itemize}
-            \item Geografische Redundanz
+            \item \textbf{Geografische Redundanz}
             \begin{itemize}
                 \item Verteilung auf mehrere Standorte zur Minimierung großflächiger Ausfälle
             \end{itemize}
@@ -190,34 +190,34 @@
    % \end{block}
 \end{frame}
 
-\subsection{Resilienzstrategien: Partionierung}
+\subsection{Resilienzstrategien: Partitionierung}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
 
-    \begin{block}{Definition Partionierung}
+    \begin{block}{Definition Partitionierung}
         Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten für Skalierbarkeit, Leistung und Flexibilität.
     \end{block}
 \end{frame}
 
 
-\subsection{Resilienzstrategien: Arten der Partionierung}
+\subsection{Resilienzstrategien: Arten der Partitionierung}
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-  %  \begin{block}{Arten der Partionierung}
+  %  \begin{block}{Arten der Partitionierung}
         \begin{itemize}
             \item Horizontale Partitionierung: Aufteilung von Datensätzen basierend auf einem Partitionsschlüssel
             \item Vertikale Partitionierung: Gruppierung von Spalten einer Tabelle
             \item Funktionale Partitionierung: Organisation nach Funktion oder Zweck der Daten
-            \item RANGE-Partitionierung: Unterteilung nach Wertebereichen (z. B. Zeit, Zahlen)
+            \item RANGE-Partitionierung: Unterteilung nach Wertebereichen (z.\,B.\ Zeit, Zahlen)
             \item HASH-Partitionierung: Verteilung durch Hash-Funktion für gleichmäßige Last
-            \item Round-Robin Partitioning: Gleichmäßige, zyklische Datenverteilung
+            \item Round-Robin Partitioning: Gleichmäßige, zyklische Datenverteilung ohne Optimierung für spezifische Abfragen
         \end{itemize}
   %  \end{block}
 \end{frame}
 
-% Bild Partitionierung nicht gut aber z.B. https://www.flip-design.de/wp-content/uploads/2011/04/SQLServerPartitionierung.png
+% Bild Partitionierung nicht gut aber z.\,B.\ https://www.flip-design.de/wp-content/uploads/2011/04/SQLServerPartitionierung.png
 
 
 \subsection{Resilienzstrategien: Skalierung}
@@ -239,7 +239,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
         \begin{itemize}
             \item Vertikale Skalierung (Scale Up)
             \begin{itemize}
-                \item Aufrüstung von Hardware (z. B. CPU, RAM) eines Systems
+                \item Aufrüstung von Hardware (z.\,B.\ CPU, RAM) eines Systems
                 \item Begrenzung auf eine zentrale Einheit
             \end{itemize}
             \item Horizontale Skalierung (Scale Out):
@@ -256,7 +256,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
   %\end{block}
 \end{frame}
 
-% Bild Skalierung z.B. https://www.shutterstock.com/search/scalability-logo
+% Bild Skalierung z.\,B.\ https://www.shutterstock.com/search/scalability-logo
 
 
 \subsection{\textbf{Pattern für Fehlertoleranzstrategien}}
@@ -371,7 +371,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 
     \begin{itemize}
         \item Erhöhte Komplexität in der Implementierung und Wartung
-        \item Risiko von Fehlkonfiguration (z.B.\ falsche Schwellenwerte)
+        \item Risiko von Fehlkonfiguration (z.\,B.\ falsche Schwellenwerte)
         \item Zusätzlicher Overhead durch Überwachung und Statusverwaltung
         \item Fallback-Daten können veraltet oder ungenau sein
     \end{itemize}
@@ -455,7 +455,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
 
     \begin{itemize}
     \item Reduziert die Wahrscheinlichkeit eines vollständigen Anwendungsabsturzes bei vorübergehenden Fehlern.
-    \item Verbessert die Zuverlässigkeit, indem kurzfristige Probleme (z. B. Netzwerkprobleme) automatisch überwunden werden.
+    \item Verbessert die Zuverlässigkeit, indem kurzfristige Probleme (z.\,B.\ Netzwerkprobleme) automatisch überwunden werden.
     \item Ermöglicht ein einheitliches Fehlerbehandlungsmodell in einer Anwendung.
 \end{itemize}
 \end{frame}
@@ -469,7 +469,7 @@ Flexible Anpassung von Ressourcen an veränderte Anforderungen.
         \item Erhöhte Komplexität in der Implementierung und Wartung.
         \item Verzögert die Gesamtverarbeitung, wenn ein Vorgang wiederholt fehlschlägt.
         \item Kann echte, dauerhafte Fehler verschleiern, wenn nur wiederholt wird, ohne die Ursache zu analysieren.
-        \item Nicht jeder Fehler ist vorübergehend (z. B. Authentifizierungsfehler), was zu unnötigen Wiederholungen führt.
+        \item Nicht jeder Fehler ist vorübergehend (z.\,B.\ Authentifizierungsfehler), was zu unnötigen Wiederholungen führt.
     \end{itemize}
 \end{frame}
 
@@ -589,7 +589,7 @@ def get_recommendation_data():
     \end{block}
     \begin{block}{Resource Based}
         \begin{itemize}
-            \item Serviceknoten berichten aktuelle Auslastung (z.B. CPU-Auslastung)
+            \item Serviceknoten berichten aktuelle Auslastung (z.\,B.\ CPU-Auslastung)
             \item Nächste Aufgabe geht an den Knoten mit niedrigster Auslastung
         \end{itemize}
     \end{block}
@@ -695,7 +695,7 @@ def get_recommendation_data():
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-	
+
 	\vspace{-12pt} %hey vspace michael here
     \begin{figure}[h]
         \centering
@@ -707,7 +707,7 @@ def get_recommendation_data():
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-	
+
 	\vspace{-12pt} %hey vspace michael here
     \begin{figure}[h]
         \centering
@@ -755,7 +755,7 @@ def get_recommendation_data():
 \begin{frame}
     \frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-	
+
 	\vspace{-12pt} %hey vspace michael here
     \begin{figure}[h]
         \centering
@@ -809,7 +809,7 @@ def get_recommendation_data():
 \begin{frame}
 	\frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
+
     \begin{block}{Problem}
     In großen verteilte Systeme ist die Anzahl der Probleme, Stellschrauben und Handlungen kaum überschaubar.
     	\begin{itemize}
@@ -825,55 +825,46 @@ def get_recommendation_data():
 \begin{frame}
 	\frametitle{\insertsection}
     \framesubtitle{\insertsubsection}
-    
     \vspace*{-0.5cm}
-    
     \begin{block}{Zentralisiertes Logging}
-    	\begin{itemize}
-    		\item Elastic Stack
-    	\end{itemize}
+%    	\begin{itemize}
+%    		\item Elastic Stack
+%    	\end{itemize}
     \end{block}
 
-	\begin{block}{Sammlung von Metriken}
-    	\begin{itemize}
-    		\item Prometheus
-    		\item Grafana Cloud
-    	\end{itemize}
+	\begin{block}{Observability: Monitoring, Metriken, Tracing}
+%    	\begin{itemize}
+%    		\item Prometheus
+%    		\item Grafana Cloud
+%    	\end{itemize}
     \end{block}
-    
-    \begin{block}{Request Tracing}
-    	\begin{itemize}
-    		\item Jaeger
-    	\end{itemize}
-    \end{block}
-
 \end{frame}
 
 
-\subsection{Was wurde gemacht?}
-
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Analyse und Implementierung von Resilienzstrategien
-        \item Fallstudien und Praxisbeispiele
-        \item Implementierungen in Python
-    \end{itemize}
-\end{frame}
-
-\subsection{Fallstudie: Netflix}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-        \item Nutzung von Hystrix für Circuit-Breaker
-        \item Dynamisches Load Balancing
-        \item Skalierung und Fehlertoleranz
-    \end{itemize}
-\end{frame}
+%\subsection{Was wurde gemacht?}
+%
+%\begin{frame}
+%    \frametitle{\insertsection}
+%    \framesubtitle{\insertsubsection}
+%
+%    \begin{itemize}
+%        \item Analyse und Implementierung von Resilienzstrategien
+%        \item Fallstudien und Praxisbeispiele
+%        \item Implementierungen in Python
+%    \end{itemize}
+%\end{frame}
+%
+%\subsection{Fallstudie: Netflix}
+%\begin{frame}
+%    \frametitle{\insertsection}
+%    \framesubtitle{\insertsubsection}
+%
+%    \begin{itemize}
+%        \item Nutzung von Hystrix für Circuit-Breaker
+%        \item Dynamisches Load Balancing
+%        \item Skalierung und Fehlertoleranz
+%    \end{itemize}
+%\end{frame}
 
 %\section{Ausblick}
 %
@@ -888,22 +879,36 @@ def get_recommendation_data():
 %    \end{itemize}
 %\end{frame}
 
-\section{Diskussion}
+%\section{Diskussion}
+%
+%\begin{frame}
+%    \frametitle{\insertsection}
+%    \framesubtitle{\insertsubsection}
+%
+%    \begin{itemize}
+%        \item ...
+%    \end{itemize}
+%\end{frame}
 
+\section{Fazit}
 \begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
+    \frametitle{\ }
+    \centering
+    \vspace*{-14pt}
+    \Huge\insertsection
+\end{frame}
 
-    \begin{itemize}
-        \item Erweiterung der Strategien auf andere Szenarien
-        \item Entwicklung neuer Muster zur Resilienzsteigerung
-        \item Untersuchung ökonomischer Auswirkungen
-    \end{itemize}
+\section{Live-Demo}
+\begin{frame}
+    \frametitle{~}
+    \centering
+    \vspace*{-14pt}
+    \Huge\insertsection
 \end{frame}
 
 \section{Quellen}
 \begin{frame}[allowframebreaks]{\insertsection} % Allow frame breaks if many references
-\bibliography{../literatur}
+\printbibliography
 \end{frame}
 
 \begin{frame}[shrink=10]{Cheatsheet: Wichtige Definitionen und Konzepte}
@@ -924,7 +929,7 @@ def get_recommendation_data():
             \textbf{Redundanz}: Vervielfältigung kritischer Komponenten oder Funktionen zur Erhöhung der
             Zuverlässigkeit und Verfügbarkeit.\\
         -> aktive vs. passive Redundanz; Redundanzebenen!\\
-            \textbf{Partionierung}: Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten
+            \textbf{Partitionierung}: Physische Unterteilung von Daten in kleinere, logisch zusammenhängende Einheiten
             für Skalierbarkeit, Leistung und Flexibilität.\\
             \textbf{Skalierung}: Flexible Anpassung von Ressourcen an veränderte Anforderungen.\\
         -> vertikal vs. horizontal vs. automatisch!
