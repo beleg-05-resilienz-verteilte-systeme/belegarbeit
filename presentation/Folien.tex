@@ -508,31 +508,14 @@ def get_recommendation_data():
         \begin{itemize}
        		\item Network Load Balancer
        		\item Application Load Balancer
-        	\item Hardware Load Balancer
+%        	\item Hardware Load Balancer
          \end{itemize}
     \end{block}
 \end{frame}
 
-\subsection{Load Balancing: Service Discovery}
-\begin{frame}
-	\frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-    \begin{block}{Service Discovery}
-	\begin{itemize}
-		\item \textbf{Server-side Discovery}
-		\begin{itemize}
-			\item Ein zentraler Load Balancer
-			\item Dienste sind unsichtbar für Client
-		\end{itemize}
-			\item \textbf{Client-side Discovery}
-		\begin{itemize}
-			\item Kein zentraler Load Balancer
-			\item Client sieht alle Dienstinstanzen
-			\item Client betreibt Load Balancing
-		\end{itemize}
-	\end{itemize}
-    \end{block}
-\end{frame}
+\note[itemize]{
+\item Horizont.Skal., \textbf{Software UND Netzwerk-Red.}
+}
 
 \subsection{Load Balancing: Architekturdiagramm}
 \begin{frame}
@@ -560,6 +543,29 @@ def get_recommendation_data():
         \end{column}
     \end{columns}
 \end{frame}
+
+
+\subsection{Load Balancing: Service Discovery}
+\begin{frame}
+	\frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+    \begin{block}{Service Discovery}
+	\begin{itemize}
+		\item \textbf{Server-side Discovery}
+		\begin{itemize}
+			\item Ein zentraler Load Balancer
+			\item Dienste sind unsichtbar für Client
+		\end{itemize}
+			\item \textbf{Client-side Discovery}
+		\begin{itemize}
+			\item Kein zentraler Load Balancer
+			\item Client sieht alle Dienstinstanzen
+			\item Client betreibt Load Balancing
+		\end{itemize}
+	\end{itemize}
+    \end{block}
+\end{frame}
+
 
 \subsection{Load Balancing: statische Strategien}
 \begin{frame}
@@ -663,35 +669,6 @@ def get_recommendation_data():
     \end{figure}
 \end{frame}
 
-\subsection{Load Balancing: Vorteile}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-    	\item Gesteigerter Durchsatz durch parallel laufende Dienste
-    	\item Hohe Verfügbarkeit durch Redundanz und nahtloses Failover
-    	\item Kostenreduktion durch dynamische horizontale Skalierung
-    \end{itemize}
-\end{frame}
-
-\subsection{Load Balancing: Nachteile}
-\begin{frame}
-    \frametitle{\insertsection}
-    \framesubtitle{\insertsubsection}
-
-    \begin{itemize}
-    	\item Deutlich gesteigerte Komplexität der Infrastruktur
-    	\item Zusätzliche Kosten für Load Balancer (Hardware und Lizenz)% hier dann latenz bei zu schwachem LB erwähnen (LB auch nur vertikal skalierbar)
-    	\item Dienste sind nicht immer kompatibel
-		\begin{itemize}
-			\item Healthchecks müssen implementiert werden
-			\item Stateful-Dienste sind nur eingeschränkt verwendbar
-		\end{itemize}
-    	\item Load Balancer als neuer Single~Point~of~Failure
-    \end{itemize}
-\end{frame}
-
 \subsection{Load Balancing in AWS}
 \begin{frame}
     \frametitle{\insertsection}
@@ -717,6 +694,37 @@ def get_recommendation_data():
     \end{figure}
 \end{frame}
 
+\subsection{Load Balancing: Vorteile}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+    	\item Gesteigerter Durchsatz durch parallel laufende Dienste
+    	\item Hohe Verfügbarkeit durch Redundanz und nahtloses Failover
+    	\item Kostenreduktion durch dynamische horizontale Skalierung
+    \end{itemize}
+\end{frame}
+
+\subsection{Load Balancing: Nachteile}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+    	\item Gesteigerte Komplexität der Infrastruktur
+    	\item Zusätzliche Kosten für Load Balancer (Hardware und Lizenz)% hier dann latenz bei zu schwachem LB erwähnen (LB auch nur vertikal skalierbar)
+    	\item Dienste sind nicht immer geeignet
+		\begin{itemize}
+			\item Healthchecks müssen ggf. implementiert werden
+			\item Stateful-Dienste sind nur eingeschränkt verwendbar
+		\end{itemize}
+    	\item Load Balancer als neuer Single~Point~of~Failure
+    \end{itemize}
+\end{frame}
+
+
+
 \subsection{Round Robin DNS}
 \begin{frame}
     \frametitle{\insertsection}
@@ -738,6 +746,9 @@ def get_recommendation_data():
     	\end{itemize}
     \end{block}
 \end{frame}
+\note[itemize]{
+	\item Netzwerk-Redundanz
+}
 
 \begin{frame}
     \frametitle{\insertsection}
@@ -801,8 +812,33 @@ def get_recommendation_data():
 	    	\end{itemize}
 	    \end{itemize}
     \end{block}
+\end{frame}
+
+\subsection{Geolocation DNS}
+\begin{frame}
+    \frametitle{\insertsection}
+    \framesubtitle{\insertsubsection}
+
+    \begin{itemize}
+    	\item Wie Round Robin DNS, aber unterschiedl. IP-Adressen je nach Region der Quell-IP
+		\begin{itemize}
+			\item Hauptziel: reduzierte Latenz
+			\item Load Balancing ist sekundär
+		\end{itemize}
+    \end{itemize}
+
+    \begin{block}{Aspekte}
+    	\begin{itemize}
+    		\item Wie wichtig ist die Latenz für den Use Case?
+    		\item Wie teuer sind Standorte?
+    		\item Ändern sich die Kosten zu Stoßzeiten?
+    	\end{itemize}
+    \end{block}
 
 \end{frame}
+\note[itemize]{
+	\item Geografische Redundanz
+}
 
 \section{Fazit}
 

@@ -44,7 +44,7 @@ package "LoadBalancer" as LB {
 
 PS -down-> LBSR
 ' Darstellung der Störung
-LBSR ..[#FF0000,dashed,thickness=2]-> CS : Netzwerkfehler
+LBSR ..[#FF0000,dashed,thickness=2]-> CS : Störung
 
 LBSR -down-> CS2 : Handle Request
 
