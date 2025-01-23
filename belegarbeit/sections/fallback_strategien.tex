@@ -19,6 +19,20 @@ Funktionalität auftreten, die den Kernbetrieb absichern.
 Dadurch wird sichergestellt, dass das System wesentliche Aufgaben weiterhin erfüllt,
 während das ursprüngliche Problem behoben wird \cite{fallback-strategy}.
 
+\begin{lstlisting}[language=Python, caption=Fallback-Pattern in Python, float=htb, label=lst:python]
+FALLBACK_DATA = [
+    {"title": "Lorem Ipsum: The Beginning", "year": 2020},
+    ...
+]
+def get_recommendation_data():
+    try:
+        response = requests.get(RECOMMENDATION_SERVICE_URL)
+        ...
+        return JSONResponse(response.json())
+    except (requests.RequestException, requests.exceptions.HTTPError) as e:
+        return JSONResponse(FALLBACK_DATA)
+\end{lstlisting}
+
 Die Vorteile der Fallback-Strategie liegen vor allem in ihrer Fähigkeit, die Zuverlässigkeit eines Systems signifikant zu verbessern.
 Durch die Möglichkeit, den Betrieb auch bei Teilstörungen aufrechtzuerhalten,
 wird die Verfügbarkeit des Systems deutlich erhöht. Gleichzeitig werden Ausfallzeiten minimiert,
@@ -28,3 +42,4 @@ Zudem trägt die Fallback-Strategie zur Fehlertoleranz bei, indem sie es einem S
 und die Stabilität des Gesamtsystems auch unter schwierigen Bedingungen zu gewährleisten.
 Indem essenzielle Funktionen weiterhin verfügbar bleiben, wird die Resilienz des Systems gestärkt und das
 Risiko schwerwiegender Beeinträchtigungen minimiert \cite{fallback-strategy-cons}.
+Ein weiterer Vorteil ist, dass das Fallback-Pattern vergleichsweise leicht eingebaut werden kann. In Listing \ref{lst:python} wurde es beispielsweise in Python implementiert.
