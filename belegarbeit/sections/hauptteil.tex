@@ -11,8 +11,33 @@
 
 \subsection{Recap}
 
-Zusammenfassend lässt sich sagen, dass der alleinige Einsatz von Containern
-oder einer Cloud-Infrastruktur die Ausfallsicherheit von Anwendungen nicht garantiert,
-was die Notwendigkeit unterstreicht, eine Wiederholungslogik zu konfigurieren und Ausfallsicherheitsfunktionen zu implementieren.
-Die Nutzung von Bibliotheken und das Verständnis von Resilienzmustern wie Retry und Circuit Breaker
-sind entscheidend für die Aufrechterhaltung der Systemverfügbarkeit und die Minimierung von Ausfallzeiten im Falle von Fehlern.
+\begin{figure}[t]
+  \centering
+  \resizebox{.8\linewidth}{!}{
+  	\input{../images/beispiel-easy1.tex}
+  }
+  \caption{Beispielarchitektur eines Streamingdiensts ohne Resilienz}
+    \label{fig:example-arch}
+  \Description{Systemarchitektur mit vier Clients, einem zentralen PlaybackService und einer Content Recommendation APIt}
+\end{figure}
+
+
+		
+Für eine resiliente Architektur gibt es ist nicht die eine \enquote{richtige} Strategie. Die Vor- und Nachteile mehrerer Strategien sollten in einem mehrschichtigen Aufbau kombiniert werden, um die Leistung und Verfügbarkeit zu maximieren.
+
+Zur Demonstration der in diesem Dokument beschriebenen Resilienzstrategien wird ein Videostreaming-Dienst als Beispielsystem entworfen. Das System in Abbildung~\ref{fig:example-arch} besteht aus einem Hauptdienst für die Videowiedergabe und einer separaten Content Recommendation API, die dem Nutzer personalisierte Inhalte vorschlägt. Die Architektur setzt auf bewährte Patterns wie Circuit Breaker, Load Balancing und Round Robin DNS, um eine hohe Verfügbarkeit und Fehlertoleranz zu gewährleisten.
+
+Um eine hohe Nutzerzufriedenheit zu garantieren, sollte die Vorschlagsfunktion hier möglichst immer verfügbar sein. Sowohl lange Wartezeiten als auch Fehler und komplette Ausfälle müssen möglichst vermieden werden. Zuerst kann hierfür ein Circuit Breaker implementiert werden. So werden Dienstinstanzen vom System getrennt, wenn diese in einen Fehlerhaften Zustand geraten. Folglich können Fehler in Dienstknoten früh erkannt werden, und Instanzen können sich nach Abtrennung vom System erholen.
+
+Um bei einem Ausfall der bisher einzigen Dienstinstanz sinnvoll reagieren zu können, müssen im nächsten Schritt redundante Instanzen implementiert werden. Mithilfe eines Load Balancers könnte man mehrere Dienste nach außen hin als einen einzelnen darstellen. So entstehen mehrere Vorteile: 
+\begin{itemize}
+	\item Funktionierende Knoten können Anfragen annehmen, obwohl ein oder mehrere andere ausgefallen sind. Das System ist weiter verfügbar.
+	\item Es können mehr Nutzer den Dienst benutzen, da die Last auf beliebig viele Dienste verteilt werden kann. Kommen mehr Nutzer hinzu, kann das System also horizontal skaliert werden.
+	\item Mithilfe von Autoscaling kann zuletzt sichergestellt werden, dass immer die richtige Anzahl von Dienstinstanzen verfügbar ist. Das heißt, dass zu Stoßzeiten ausreichend Kazazitäten zur Verfügung stehen, während das System zu Ruhezeiten nicht überdimensioniert ist. So steigt die Leistung, während Kosten gespart werden können.
+\end{itemize}
+
+Ebenso erdenklich ist jedoch, dass durch einen schwerwiegenderen Fehler keine Dienstinstanz mehr verfügbar ist. Dies ist denkbar wenn der Load Balancer versagt, oder eine schwerwiegende Netzwerkstörung im Rechenzentrum vorliegt. Dieser Fehler ist nicht unmittelbar lösbar, dennoch kann man das System ausfallresilient machen, schließlich ist eine geminderte User Experience besser als gar keine. Hier wäre ein Fallback zu einer statischen Liste (anstelle einer persönlichen Content Recommendation-Liste) denkbar. So hat ein Nutzer dennoch Vorschläge auf der Startseite dieses Streamingdienstes, und der Betrieb des Fallbackdiensts benötigt erheblich weniger Ressourcen und hat weniger Fehlerpotential.
+
+Zuletzt könnte dieser gesamte Servercluster fehlschlagen; die IP-Adresse ist nicht mehr erreichbar. Auch davor kann man sich schützen: Obwohl das DNS Round Robin Nachteile hat, die es unter anderem zu einem suboptimalen Load Balancer macht, ist es eine sinnvolle \textit{Last Defense}. So kann auch im unwahrscheinlichen Fall eines Totalausfalls die Verfügbarkeit des Dienstes erhalten werden. Um die Latenz der Verbindung zu reduzieren und somit die Geschwindigkeit der Anwendung weiter zu erhöhen, könnte hier zusätzlich ein Geolocation-basiertes DNS eingerichtet werden, um Nutzer zu möglichst nahgelegenen Servern zu leiten.
+
+Durch diese Kombination von Circuit Breaker, Load Balancing, einer Fallback-Strategie und von DNS-basiertem Balancing wird das System robuster gegenüber Lastspitzen und Ausfällen. Dieses Beispiel zeigt, wie diese Patterns in einem modernen verteilten System angewendet werden können, um Fehlerresilienz und -toleranz und Skalierbarkeit zu maximieren.

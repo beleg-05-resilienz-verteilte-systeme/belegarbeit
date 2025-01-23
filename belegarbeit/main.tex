@@ -1,6 +1,6 @@
 %% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[acmtog]{acmart}
-\usepackage[english,ngerman]{babel}
+\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 
 \usepackage{csquotes}
@@ -17,7 +17,7 @@
 \acmYear{2025}
 \citestyle{acmauthoryear}
 
-\usepackage[textsize=tiny]{todonotes}
+%\usepackage[textsize=tiny]{todonotes}
 
 \usepackage[figurename=Fig.]{caption}
 \setcopyright{none}
@@ -32,6 +32,31 @@
 %% end of the preamble, start of the body of the document source.
 \begin{document}
 
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10010405.10010406.10010417</concept_id>
+       <concept_desc>Applied computing~Enterprise architectures</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10010583.10010750.10010751.10010757</concept_id>
+       <concept_desc>Hardware~System-level fault tolerance</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10010520.10010575</concept_id>
+       <concept_desc>Computer systems organization~Dependable and fault-tolerant systems and networks</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Applied computing~Enterprise architectures}
+\ccsdesc[300]{Hardware~System-level fault tolerance}
+\ccsdesc[500]{Computer systems organization~Dependable and fault-tolerant systems and networks}
+
+\keywords{Distributed Computing, High Availability, Resilience}
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.

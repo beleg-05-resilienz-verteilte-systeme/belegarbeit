@@ -6,6 +6,14 @@ Dennoch ist auch ein System mit Lastverteilung nicht ausfallsicher:
 Der Lastverteiler selbst oder der gesamte Servercluster könnte ausfallen, woraufhin die Dienstleistung nicht mehr erreichbar wäre.
 Eine Strategie, um diesem Fall entgegenzusteuern, ist DNS Round Robin.
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{../images/roundrobindns}
+  \caption{DNS Round Robin-Architektur~\cite{cloudns-roundrobin}}
+    \label{fig:rrdns}
+  \Description{Diagramm mit vier Clients, welche durch einen DNS-Server jeweils eine der vier Serveradressen primär nutzen}
+\end{figure}
+
 Das Domain Name System, kurz DNS, wird genutzt um eine Assoziation zwischen einer Domain und einer IP-Adresse zu hinterlegen.
 Beispielsweise könnte ein Record hinterlegt werden, dass die Domain \verb|server.de| auf die Serveradresse des ersten Lastverteilers zeigt.
 Wenn ein Client nun anstelle einer IP-Adresse die zugehörige Domain benutzt, wird zuerst der lokale DNS (Cache) befragt, ob der Name zu einer IP aufgelöst werden kann.
@@ -46,3 +54,16 @@ Zwei bestehende Probleme haben den Ursprung darin, dass der Client die Verantwor
 	\item Der Rückfall auf die weiteren IP-Adressen kann nur erfolgen, wenn der Client einen Fehler bei dem Abruf der Primäradresse erkennt. Dies funktioniert wenn der Server nicht erreichbar ist. Wenn aber stattdessen beispielsweise Fehlercodes anstatt von Inhalt zurückgegeben werden, ist die Kommunikation mit dem Host aus Sicht des Clients erfolgt; es erfolgt kein Failover.
 	\item Der Client kann erst nach einer gewissen Wartezeit davon ausgehen, dass eine Adresse nicht erreichbar ist. So kann eine erhebliche Wartezeit entstehen, bis das Failover-Verhalten ausgelöst wird~\cite{so-dns-slow}.%\todo{n. d. schrott}
 \end{itemize}
+
+\subsubsection{Exkurs: Geolocation DNS}
+Einige DNS-Anbieter unterstützen eine geolokalisierte DNS. Diese funktioniert aus Sicht des Clients und Servers sehr ähnlich zum beschriebenen DNS Round Robin. Anstelle die Adressen jedoch nur zyklisch herauszugeben, wird hier die IP-Adresse des anfragenden Clients herausgegeben. Mithilfe dieser kann ermittelt werden, aus welchem geografischen Raum die Anfrage kommt. Der DNS nutzt diese Information, um als Primäradresse die Adresse eines Servers zurückzugeben, welcher dem Client am nächsten ist \cite{mic-geodns}. 
+
+So entsteht ein wichtiger Vorteil: Zum einen wird auch hier bereits die Last auf mehrere Server verteilt (darüberhinaus können GeoDNS und Round Robin auch kombiniert werden). Zum anderen wird aber auch der physische Abstand von Client und Server reduziert. Hohe Abstände führen zu deutlich höheren Latenzen, was insbesondere für Echtzeitaufgaben wie Sprachtelefonie oder Livestreaming nachteilhaft ist. Aber auch beispielsweise das Laden einer Webseite wird erheblich verlangsamt, besonders wenn viel Anfragen aufeinander aufbauen (also ein langer \textit{Request Waterfall} vorhanden ist).
+
+Internationale Nutzer mit der gleichen Domain an verschiedene Zonen weiterzuleiten, kann die Leistung also erheblich erhöhen \cite{mic-geodns}.
+
+
+
+
+
+
