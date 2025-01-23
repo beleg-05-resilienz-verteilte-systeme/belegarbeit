@@ -1,9 +1,29 @@
-\section{Zusammenfassung und Ausblick}
+\section{Zusammenfassung}
 
 %(Überblick über die gesamte Arbeit, Rückführung auf Aussagen aus Kapitel 1 durchführen, offene Punkte als neue Forschungsfragen definieren)
+
+%Zusammenfassend lässt sich sagen, dass der alleinige Einsatz von Containern
+%oder einer Cloud-Infrastruktur die Ausfallsicherheit von Anwendungen nicht garantiert,
+%was die Notwendigkeit unterstreicht, eine Wiederholungslogik zu konfigurieren und Ausfallsicherheitsfunktionen zu implementieren.
+%Die Nutzung von Bibliotheken und das Verständnis von Resilienzmustern wie Retry und Circuit Breaker
+%sind entscheidend für die Aufrechterhaltung der Systemverfügbarkeit und die Minimierung von Ausfallzeiten im Falle von Fehlern.
+
+Die vorliegende Arbeit hat gezeigt, dass die Resilienz und Fehlertoleranz verteilter Systeme durch gezielte Architekturentscheidungen und den Einsatz bewährter Muster erheblich gesteigert werden kann. Insbesondere wurde herausgestellt, dass Techniken wie Circuit Breaker, Load Balancing und DNS Round Robin zusammen eine entscheidende Rolle in der Stabilität und Verfügbarkeit moderner Cloud-basierter Anwendungen spielen.
+
+Durch die Analyse verschiedener Patterns wurde verdeutlicht, dass eine mehrschichtige Verwendung verschiedener Strategien unabdingbar ist für ein hochverfügbares verteiltes System. Nicht nur die Vermeidung von Fehlern, sondern auch das tolerieren fehlerhafter Zustände bedarf sorgfältiger Überlegung.
+
+\subsection{Praktische Implikationen}
+Die in dieser Arbeit untersuchten Muster sind essenziell für die Entwicklung robuster und hochverfügbarer Architekturen. Die Implementierung solcher Strategien ist insbesondere in Bereichen mit hohen Nutzerzahlen, latenzkritischen Anwendungen oder verteilten Services relevant.
 
 Die wichtigste Erkenntnis ist, dass Entwickler aktiv Ausfallsicherheitsfunktionen
 in ihren Anwendungen entwerfen und implementieren müssen, selbst wenn diese in Containern oder in der Cloud ausgeführt werden.
 Die einfache Bereitstellung einer Anwendung in diesen Umgebungen macht sie nicht automatisch widerstandsfähig.
 Durch den Einsatz von Bibliotheken und Mustern wie Retry und Circuit Breaker können Entwickler zuverlässigere und
-fehlertolerantere Systeme erstellen~\cite{Haley.28.06.2018}.
+fehlertolerantere Systeme erstellen~\cite{Haley.28.06.2018}. Mit einer dynamisch skalierenden Architektur kann nicht nur die Nutzerzufriedenheit gesteigert werden, auch die Betriebskosten des Systems können reduziert werden.
+\subsection{Ausblick}
+
+Trotz der Vorteile bringen resiliente Architekturen auch Herausforderungen mit sich. Die zusätzliche Komplexität vieler Patterns erfordert eine sorgfältige Planung und Überwachung. Auch die Verwaltung solcher Architekturen benötigt fortlaufend Aufmerksamkeit, um nicht den Überblick über hochfrequente automatisierte Entscheidungen oder Fehler zu verlieren.
+
+In Zukunft könnten weiterentwickelte KI-gestützte Load-Balancing-Strategien oder selbstheilende Systeme mit automatischer Fehlererkennung und Recovery-Mechanismen intelligentere Entscheidungen mit mehr Entscheidungsdaten treffen. Dies könnte besonders in Anbetracht der fortschreitenden Bedeutung von Infrastructure as Code (IaC) an Bedeutung gewinnen.
+
+Letztlich bleibt festzuhalten, dass resiliente Architekturen ein kontinuierlicher Entwicklungsprozess sind, bei dem die richtige Kombination aus Skalierung, Fehlertoleranz und Wiederherstellungsstrategien gewählt werden muss, um eine hohe Verfügbarkeit, Stabilität und Nutzerzufriedenheit zu gewährleisten.
