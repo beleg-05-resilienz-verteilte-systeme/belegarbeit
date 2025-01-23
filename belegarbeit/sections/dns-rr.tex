@@ -55,8 +55,12 @@ Zwei bestehende Probleme haben den Ursprung darin, dass der Client die Verantwor
 	\item Der Client kann erst nach einer gewissen Wartezeit davon ausgehen, dass eine Adresse nicht erreichbar ist. So kann eine erhebliche Wartezeit entstehen, bis das Failover-Verhalten ausgelöst wird~\cite{so-dns-slow}.%\todo{n. d. schrott}
 \end{itemize}
 
-\subsubsection{Geolocation DNS}
-Ähnlich zum DNS Round Robin funktioniert die geolokalisierte DNS: 
+\subsubsection{Exkurs: Geolocation DNS}
+Einige DNS-Anbieter unterstützen eine geolokalisierte DNS. Diese funktioniert aus Sicht des Clients und Servers sehr ähnlich zum beschriebenen DNS Round Robin. Anstelle die Adressen jedoch nur zyklisch herauszugeben, wird hier die IP-Adresse des anfragenden Clients herausgegeben. Mithilfe dieser kann ermittelt werden, aus welchem geografischen Raum die Anfrage kommt. Der DNS nutzt diese Information, um als Primäradresse die Adresse eines Servers zurückzugeben, welcher dem Client am nächsten ist \cite{mic-geodns}. 
+
+So entsteht ein wichtiger Vorteil: Zum einen wird auch hier bereits die Last auf mehrere Server verteilt (darüberhinaus können GeoDNS und Round Robin auch kombiniert werden). Zum anderen wird aber auch der physische Abstand von Client und Server reduziert. Hohe Abstände führen zu deutlich höheren Latenzen, was insbesondere für Echtzeitaufgaben wie Sprachtelefonie oder Livestreaming nachteilhaft ist. Aber auch beispielsweise das Laden einer Webseite wird erheblich verlangsamt, besonders wenn viel Anfragen aufeinander aufbauen (also ein langer \textit{Request Waterfall} vorhanden ist).
+
+Internationale Nutzer mit der gleichen Domain an verschiedene Zonen weiterzuleiten, kann die Leistung also erheblich erhöhen \cite{mic-geodns}.
 
 
 
