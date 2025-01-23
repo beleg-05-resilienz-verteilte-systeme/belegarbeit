@@ -10,9 +10,21 @@
 
 \subsection{Recap}
 
+\begin{figure}[t]
+  \centering
+  \resizebox{.8\linewidth}{!}{
+  	\input{../images/beispiel-easy1.tex}
+  }
+  \caption{Beispielarchitektur eines Streamingdiensts ohne Resilienz}
+    \label{fig:example-arch}
+  \Description{Systemarchitektur mit vier Clients, einem zentralen PlaybackService und einer Content Recommendation APIt}
+\end{figure}
+
+
+		
 Für eine resiliente Architektur gibt es ist nicht die eine \enquote{richtige} Strategie. Die Vor- und Nachteile mehrerer Strategien sollten in einem mehrschichtigen Aufbau kombiniert werden, um die Leistung und Verfügbarkeit zu maximieren.
 
-Zur Demonstration der in diesem Dokument beschriebenen Resilienzstrategien wird ein Videostreaming-Dienst als Beispielsystem entworfen. Das System besteht aus einem Hauptdienst für die Videowiedergabe und einer separaten Content Recommendation API, die dem Nutzer personalisierte Inhalte vorschlägt. Die Architektur setzt auf bewährte Patterns wie Circuit Breaker, Load Balancing und Round Robin DNS, um eine hohe Verfügbarkeit und Fehlertoleranz zu gewährleisten.
+Zur Demonstration der in diesem Dokument beschriebenen Resilienzstrategien wird ein Videostreaming-Dienst als Beispielsystem entworfen. Das System in Abbildung~\ref{fig:example-arch} besteht aus einem Hauptdienst für die Videowiedergabe und einer separaten Content Recommendation API, die dem Nutzer personalisierte Inhalte vorschlägt. Die Architektur setzt auf bewährte Patterns wie Circuit Breaker, Load Balancing und Round Robin DNS, um eine hohe Verfügbarkeit und Fehlertoleranz zu gewährleisten.
 
 Um eine hohe Nutzerzufriedenheit zu garantieren, sollte die Vorschlagsfunktion hier möglichst immer verfügbar sein. Sowohl lange Wartezeiten als auch Fehler und komplette Ausfälle müssen möglichst vermieden werden. Zuerst kann hierfür ein Circuit Breaker implementiert werden. So werden Dienstinstanzen vom System getrennt, wenn diese in einen Fehlerhaften Zustand geraten. Folglich können Fehler in Dienstknoten früh erkannt werden, und Instanzen können sich nach Abtrennung vom System erholen.
 
