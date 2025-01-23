@@ -1,0 +1,38 @@
+\subsection{Failover-Muster}
+Eine weitere wichtige Methode, die sich in diesem Kontext bewährt hat, ist das
+Failover-Muster. Dieses Konzept ist darauf ausgerichtet, die Kontinuität eines
+Systems auch bei Störungen oder Ausfällen sicherzustellen, indem es eine
+nahtlose Umschaltung auf alternative Ressourcen oder Backup-Komponenten
+ermöglicht. Solche Mechanismen sind besonders in verteilten Systemen und bei
+Diensten, die auf hohe Verfügbarkeit und Zuverlässigkeit angewiesen sind,
+unverzichtbar. Das Failover-Muster implementiert eine Architektur, die in der Lage
+ist, bei einem Ausfall der primären Komponente automatisch eine redundante
+Komponente zu aktivieren, ohne dass die Endbenutzer von der Störung betroffen
+sind.
+
+Es gibt verschiedene Arten von Failover, die sich in ihrer Architektur und ihrem
+Einsatzzweck unterscheiden. Das Active-Passive-Failover, bei dem eine aktive
+Hauptkomponente von einer passiven Backup-Komponente unterstützt wird, wird
+häufig für kosteneffiziente Implementierungen genutzt. Das Active-Active-Failover
+hingegen betreibt mehrere aktive Komponenten gleichzeitig, was eine bessere
+Lastverteilung und kürzere Umschaltzeiten ermöglicht. Darüber hinaus gibt es
+Hot, Warm und Cold Failover. Während Hot Failover eine sofortige Umschaltung
+ermöglicht, indem die Backup-Komponente ständig einsatzbereit ist, bieten Warm
+und Cold Failover kostengünstigere Alternativen mit längeren Umschaltzeiten, da
+die Backup-Komponenten nur teilweise oder gar nicht vorab initialisiert sind.
+
+Zu den Vorteilen des Failover-Musters gehört vor allem die Erhöhung der
+Systemverfügbarkeit. Durch die Fähigkeit, automatisch auf redundante
+Komponenten umzuschalten, können Ausfallzeiten minimiert werden, was die
+Benutzererfahrung erheblich verbessert. Gleichzeitig stärkt das Muster die
+Resilienz eines Systems, da es auf potenzielle Ausfälle vorbereitet ist und deren
+Auswirkungen abfedert. Es bietet außerdem Flexibilität, da es in verschiedenen Systemtypen eingesetzt werden kann, sowohl in stateless als auch in stateful
+Anwendungen, wobei es sich an die spezifischen Anforderungen anpassen lässt.
+
+Dennoch bringt das Failover-Muster auch einige Nachteile mit sich. Die Implementierung erfordert zusätzliche Ressourcen wie Hardware oder virtuelle
+Maschinen, was die Kosten erhöht. Insbesondere bei Active-Active-Setups kann
+die Synchronisation von Daten und Zuständen die Systemleistung belasten und
+zusätzliche Komplexität verursachen. Zudem können unerwartete Fehler im
+Failover-Prozess selbst auftreten, die die Ausfallzeit verlängern oder neue
+Probleme verursachen. Daher ist es entscheidend, Failover-Mechanismen
+regelmäßig zu testen und zu optimieren, um ihre Zuverlässigkeit sicherzustellen \cite{failover-patterns}.
