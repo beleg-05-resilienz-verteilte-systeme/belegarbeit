@@ -6,6 +6,14 @@ Dennoch ist auch ein System mit Lastverteilung nicht ausfallsicher:
 Der Lastverteiler selbst oder der gesamte Servercluster könnte ausfallen, woraufhin die Dienstleistung nicht mehr erreichbar wäre.
 Eine Strategie, um diesem Fall entgegenzusteuern, ist DNS Round Robin.
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{../images/roundrobindns}
+  \caption{DNS Round Robin-Architektur~\cite{cloudns-roundrobin}}
+    \label{fig:rrdns}
+  \Description{Diagramm mit vier Clients, welche durch einen DNS-Server jeweils eine der vier Serveradressen primär nutzen}
+\end{figure}
+
 Das Domain Name System, kurz DNS, wird genutzt um eine Assoziation zwischen einer Domain und einer IP-Adresse zu hinterlegen.
 Beispielsweise könnte ein Record hinterlegt werden, dass die Domain \verb|server.de| auf die Serveradresse des ersten Lastverteilers zeigt.
 Wenn ein Client nun anstelle einer IP-Adresse die zugehörige Domain benutzt, wird zuerst der lokale DNS (Cache) befragt, ob der Name zu einer IP aufgelöst werden kann.
